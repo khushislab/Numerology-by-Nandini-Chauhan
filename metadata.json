@@ -1,0 +1,8 @@
+{
+  "name": "Numerology by Nandini Chauhan",
+  "description": "A calm, spiritual, and modern numerology consultation landing page designed to provide emotional clarity and life guidance through numbers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
