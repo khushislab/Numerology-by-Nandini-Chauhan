@@ -1,13 +1,11 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
-import { GoogleGenAI } from "@google/genai";
 import { 
   Menu, X, MessageCircle, PhoneCall, Check, 
   MousePointer2, CreditCard, Sparkles, Heart, 
   Brain, Navigation, Sun, ChevronLeft, ChevronRight, 
-  Quote, ShieldCheck, ChevronDown, ChevronUp, Send, Loader2, ArrowUp, CheckCircle2,
-  Stars, Sparkle, User, Calendar
+  Quote, ShieldCheck, ChevronDown, ChevronUp, Send, Loader2, ArrowUp, CheckCircle2 
 } from 'lucide-react';
 
 // --- CONFIG ---
@@ -81,8 +79,9 @@ const Navbar: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
 
   const navLinks = [
     { name: 'Home', href: '#home' }, { name: 'About', href: '#about' },
-    { name: 'AI Reading', href: '#ai-reading' }, { name: 'Services', href: '#services' },
-    { name: 'Testimonials', href: '#testimonials' }, { name: 'FAQ', href: '#faq' },
+    { name: 'Services', href: '#services' }, { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Value', href: '#value' }, { name: 'Testimonials', href: '#testimonials' },
+    { name: 'FAQ', href: '#faq' }, { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -189,111 +188,6 @@ const About: React.FC = () => {
   );
 };
 
-const AIRreading: React.FC = () => {
-  const [name, setName] = useState('');
-  const [dob, setDob] = useState('');
-  const [reading, setReading] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [loadingMsg, setLoadingMsg] = useState('Consulting the stars...');
-
-  const messages = [
-    'Consulting the stars...',
-    'Analyzing your cosmic vibration...',
-    'Listening to your unique rhythm...',
-    'Finding your natural flow...',
-    'Preparing your kind insight...'
-  ];
-
-  useEffect(() => {
-    let interval: any;
-    if (loading) {
-      interval = setInterval(() => {
-        setLoadingMsg(messages[Math.floor(Math.random() * messages.length)]);
-      }, 2500);
-    }
-    return () => clearInterval(interval);
-  }, [loading]);
-
-  const generateReading = async () => {
-    if (!name || !dob) return;
-    setLoading(true);
-    setReading(null);
-    try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `I am Nandini, a professional numerologist. My philosophy is kind, calm, and focused on helping people choose better paths by understanding their numbers. 
-        User Name: ${name}
-        User DOB: ${dob}
-        Please provide a short, warm, and insightful numerology mini-reading (max 100 words). Focus on their natural rhythm and how they can find flow today. Avoid scary predictions.`,
-      });
-      setReading(response.text || "The numbers are whispering softly... please try again in a moment.");
-    } catch (err) {
-      console.error(err);
-      setReading("I'm sensing a small block in the cosmic connection. Let's try again shortly.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <section id="ai-reading" className="py-24 px-6 bg-white scroll-mt-20">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-blush-100/30 rounded-[3rem] p-8 md:p-16 border border-blush-200/50 shadow-inner relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-10"><Stars size={120} className="text-blush-400" /></div>
-          
-          <div className="relative z-10 text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-blush-600 text-[10px] font-bold uppercase tracking-widest mb-6 border border-blush-100">
-              <Sparkle size={14} /> Instant Insight
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Get a Free Mini-Reading</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Enter your details for a small, kind note from the numbers. Just to help you feel a bit more "in flow" today.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-blush-400"><User size={20} /></div>
-              <input 
-                type="text" 
-                placeholder="Your Full Name" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full bg-white/80 border border-blush-100 rounded-2xl py-4 pl-14 pr-6 focus:ring-2 focus:ring-blush-400 focus:outline-none transition-all"
-              />
-            </div>
-            <div className="relative">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-blush-400"><Calendar size={20} /></div>
-              <input 
-                type="date" 
-                value={dob}
-                onChange={(e) => setDob(e.target.value)}
-                className="w-full bg-white/80 border border-blush-100 rounded-2xl py-4 pl-14 pr-6 focus:ring-2 focus:ring-blush-400 focus:outline-none transition-all"
-              />
-            </div>
-          </div>
-
-          <button 
-            onClick={generateReading}
-            disabled={loading || !name || !dob}
-            className="w-full bg-blush-400 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blush-500 transition-all shadow-lg active:scale-95 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3"
-          >
-            {loading ? <Loader2 className="animate-spin" /> : <Sparkles size={20} />}
-            {loading ? loadingMsg : "Receive Your Reading"}
-          </button>
-
-          {reading && (
-            <div className="mt-12 bg-white rounded-3xl p-8 border border-blush-100 shadow-xl animate-fade-in relative">
-              <div className="absolute -top-4 left-8 bg-blush-400 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Your Insight</div>
-              <p className="text-lg text-gray-700 leading-relaxed italic">"{reading}"</p>
-              <p className="mt-6 text-xs text-gray-400 font-medium">This is a small glimpse. For a deeper, personal talk, consider booking a call below.</p>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Services: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
   const servicesList = [
     { name: "Personal Numerology Reading", price: 499, description: "Understand who you really are and your life's purpose.", outcomes: ["Feel clear about your next step", "Understand why problems repeat", "Feel calm and less confused", "Know what to focus on"] },
@@ -309,7 +203,7 @@ const Services: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
   ];
 
   return (
-    <section id="services" className="py-24 px-6 bg-pink-50/20 relative z-10 scroll-mt-20">
+    <section id="services" className="py-24 px-6 bg-white relative z-10 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16"><h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Our Services</h2><p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Choose what you need today. Simple solutions for a peaceful tomorrow.</p></div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -507,24 +401,52 @@ const Footer: React.FC = () => {
 };
 
 const BookingModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', service: "Personal Numerology Reading (₹499)" });
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => { setFormData({ ...formData, [e.target.name]: e.target.value }); };
-  const handleWhatsAppHandoff = (e: React.FormEvent) => {
+  
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
-    window.open(`https://wa.me/917448222924?text=${encodeURIComponent(msg)}`, '_blank');
-    setStep(2);
+    setStatus('loading');
+    
+    try {
+      // Capture lead data first to ensure no submission is lost
+      await fetch(NEWSLETTER_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 
+          ...formData,
+          type: 'booking'
+        }).toString(),
+      });
+      
+      // Auto-trigger WhatsApp message
+      const msg = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
+      window.open(`https://wa.me/917448222924?text=${encodeURIComponent(msg)}`, '_blank');
+      
+      setStatus('success');
+      // Briefly show success then close
+      setTimeout(onClose, 2500);
+    } catch (err) {
+      // Even if network fails, we still try to open WhatsApp as a fallback
+      const msg = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
+      window.open(`https://wa.me/917448222924?text=${encodeURIComponent(msg)}`, '_blank');
+      setStatus('success');
+      setTimeout(onClose, 2500);
+    }
   };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onClick={onClose}></div>
       <div className="relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden animate-fade-in">
         <button onClick={onClose} className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-900"><X size={24} /></button>
-        {step === 1 ? (
+        {status !== 'success' ? (
           <div className="p-8 md:p-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Book a Call</h2><p className="text-gray-500 mb-8">Start your journey to clarity. Fill in your details below.</p>
-            <form onSubmit={handleWhatsAppHandoff} className="space-y-5">
+            <form onSubmit={handleBookingSubmit} className="space-y-5">
               <div><label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-widest text-[10px]">Full Name</label><input required name="name" value={formData.name} onChange={handleInputChange} type="text" placeholder="Your Name" className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 focus:ring-2 focus:ring-blush-400" /></div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-widest text-[10px]">Phone Number</label><input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" placeholder="+91..." className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 focus:ring-2 focus:ring-blush-400" /></div>
@@ -533,14 +455,17 @@ const BookingModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </select></div>
               </div>
               <div><label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-widest text-[10px]">Email Address</label><input required name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="email@example.com" className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-5 focus:ring-2 focus:ring-blush-400" /></div>
-              <button type="submit" className="w-full bg-blush-400 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-blush-500 shadow-lg active:scale-95">Continue on WhatsApp <Send size={20} /></button>
+              <button type="submit" disabled={status === 'loading'} className="w-full bg-blush-400 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-blush-500 shadow-lg active:scale-95 disabled:opacity-50">
+                {status === 'loading' ? <Loader2 className="animate-spin" /> : <Send size={20} />}
+                Confirm & Open WhatsApp
+              </button>
             </form>
           </div>
         ) : (
           <div className="p-8 md:p-12 text-center">
             <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={48} /></div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Request Sent!</h2><p className="text-gray-500 mb-8 leading-relaxed">We've opened WhatsApp for you. Please send the pre-filled message to confirm your slot.</p>
-            <button onClick={onClose} className="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold hover:bg-gray-800 shadow-lg active:scale-95">Close Window</button>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Submission Captured!</h2><p className="text-gray-500 mb-8 leading-relaxed">Your details have been saved. Opening WhatsApp now to finalize your slot...</p>
+            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-green-500 animate-[progress_2s_ease-in-out]"></div></div>
           </div>
         )}
       </div>
@@ -559,7 +484,6 @@ const App: React.FC = () => {
       <main>
         <Hero onBookClick={openBooking} />
         <About />
-        <AIRreading />
         <Services onBookClick={openBooking} />
         <HowItWorks />
         <Value />

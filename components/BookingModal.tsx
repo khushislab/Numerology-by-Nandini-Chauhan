@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2 } from 'lucide-react';
+import { X, Send, CheckCircle2, Loader2 } from 'lucide-react';
 
 interface BookingModalProps {
   onClose: () => void;
@@ -20,7 +20,7 @@ const services = [
 ];
 
 const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
-  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -33,12 +33,40 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleWhatsAppHandoff = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
-    const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/917448222924?text=${encoded}`, '_blank');
-    setStep(2);
+    setStatus('loading');
+    
+    try {
+      const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';
+      
+      // Capture lead data silently first for guaranteed record
+      await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 
+          ...formData,
+          type: 'booking'
+        }).toString(),
+      });
+      
+      // Prepare and trigger WhatsApp
+      const message = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/917448222924?text=${encoded}`, '_blank');
+      
+      setStatus('success');
+      setTimeout(onClose, 2500);
+    } catch (err) {
+      console.error(err);
+      // Fallback: Still open WhatsApp even if silent capture fails
+      const message = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/917448222924?text=${encoded}`, '_blank');
+      setStatus('success');
+      setTimeout(onClose, 2500);
+    }
   };
 
   return (
@@ -50,12 +78,12 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
           <X size={24} />
         </button>
 
-        {step === 1 ? (
+        {status !== 'success' ? (
           <div className="p-8 md:p-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Book a Call</h2>
             <p className="text-gray-500 mb-8">Start your journey to clarity. Fill in your details below.</p>
             
-            <form onSubmit={handleWhatsAppHandoff} className="space-y-5">
+            <form onSubmit={handleBookingSubmit} className="space-y-5">
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-widest text-[10px]">Full Name</label>
                 <input 
@@ -110,10 +138,11 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
 
               <button 
                 type="submit"
-                className="w-full bg-blush-400 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-blush-500 transition-all shadow-lg active:scale-95"
+                disabled={status === 'loading'}
+                className="w-full bg-blush-400 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-blush-500 transition-all shadow-lg active:scale-95 disabled:opacity-50"
               >
-                Continue on WhatsApp
-                <Send size={20} />
+                {status === 'loading' ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} />}
+                Confirm & Open WhatsApp
               </button>
             </form>
           </div>
@@ -122,16 +151,13 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
             <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 size={48} />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Request Sent!</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Submission Captured!</h2>
             <p className="text-gray-500 mb-8 leading-relaxed">
-              We've opened WhatsApp for you. Please send the pre-filled message to confirm your slot.
+              Your details have been saved. Opening WhatsApp now to finalize your slot...
             </p>
-            <button 
-              onClick={onClose}
-              className="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold hover:bg-gray-800 transition-all shadow-lg active:scale-95"
-            >
-              Close Window
-            </button>
+            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-full bg-green-500 animate-[progress_2s_ease-in-out]"></div>
+            </div>
           </div>
         )}
       </div>
