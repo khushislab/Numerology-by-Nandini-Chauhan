@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send, Loader2 } from 'lucide-react';
 
@@ -57,13 +56,10 @@ const About: React.FC = () => {
             
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Hello, I am Nandini. I don't believe in scary predictions or magic shortcuts. I believe in listening to you first.
-              </p>
-              <p>
-                For years, I've helped people just like you who feel stuck or overwhelmed. My goal is simple: to help you understand yourself better so you can breathe easier. 
+                Hi, I’m Nandini Chauhan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.
               </p>
               <p className="text-2xl text-gray-800 border-l-4 border-blush-200 pl-6 py-2 font-medium">
-                “I don’t predict your future. I help you understand yourself — so you can choose better.”
+                "I show you how to align with the cosmic numbers that were always meant to lead you."
               </p>
             </div>
             
@@ -71,7 +67,7 @@ const About: React.FC = () => {
               <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-blush-100">
                 <h4 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-widest">Join our Newsletter</h4>
                 <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                  Subscribe to learn simple numerology tips. Small insights can solve big problems.
+                  Subscribe to receive small, kind notes about your numbers. Let these simple tips help you feel a bit more "in flow" every single day.
                 </p>
                 <form className="relative" onSubmit={handleSubmit}>
                   <input 

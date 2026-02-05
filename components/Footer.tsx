@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
           <div className="space-y-6">
             <h4 className="font-bold text-gray-900 uppercase tracking-widest text-xs">Newsletter</h4>
             <p className="text-xs text-gray-500 leading-relaxed">
-              Subscribe to learn simple numerology tips. Small insights can solve big problems.
+              Subscribe to receive small, kind notes about your numbers. Let these simple tips help you feel a bit more "in flow" every single day.
             </p>
             <form className="relative" onSubmit={handleSubmit}>
               <input 

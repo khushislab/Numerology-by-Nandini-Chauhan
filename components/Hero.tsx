@@ -19,11 +19,11 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
-          When life keeps repeating the same problems — career confusion, relationship stress, constant overthinking — <span className="text-gray-900 font-semibold underline decoration-blush-300 underline-offset-4">numbers can show you why.</span>
+          The universe doesn't make mistakes. You have a special rhythm, and <span className="text-gray-900 font-semibold underline decoration-blush-300 underline-offset-4">numbers can help you find it</span>, so you are not feeling lost.
         </p>
 
         <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-2xl mx-auto font-medium">
-          “I’m Nandini. I don’t predict your future. I help you understand yourself — so you can choose better.”
+          "I'm Nandini. I show you how to align with the cosmic numbers that were always meant to lead you."
         </p>
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-5">
