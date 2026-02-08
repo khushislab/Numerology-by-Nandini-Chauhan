@@ -1,9 +1,12 @@
+
 import React from 'react';
 import { MessageCircle, PhoneCall } from 'lucide-react';
 
 interface HeroProps {
   onBookClick: () => void;
 }
+
+const PRIMARY_PHONE = "7588316966";
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   return (
@@ -35,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             Book a Call — Let’s Talk It Through
           </button>
           <a 
-            href="https://wa.me/917448222924?text=Hi Nandini, I want to ask a question before booking a consultation." 
+            href={`https://wa.me/91${PRIMARY_PHONE}?text=Hi Nandini, I want to ask a question before booking a consultation.`} 
             target="_blank" 
             rel="noopener noreferrer" 
             className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-gray-700 border-2 border-blush-200 px-10 py-5 rounded-full text-xl font-bold hover:bg-blush-50 transition-all shadow-md active:scale-95"

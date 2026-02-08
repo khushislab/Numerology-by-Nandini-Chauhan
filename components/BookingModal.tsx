@@ -6,6 +6,8 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
+const PRIMARY_PHONE = "7588316966";
+
 const services = [
   "Personal Numerology Reading (₹499)",
   "Relationship Compatibility (₹599)",
@@ -51,10 +53,10 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
         }).toString(),
       });
       
-      // Prepare and trigger WhatsApp
+      // Prepare and trigger WhatsApp to Primary
       const message = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
       const encoded = encodeURIComponent(message);
-      window.open(`https://wa.me/917448222924?text=${encoded}`, '_blank');
+      window.open(`https://wa.me/91${PRIMARY_PHONE}?text=${encoded}`, '_blank');
       
       setStatus('success');
       setTimeout(onClose, 2500);
@@ -63,7 +65,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ onClose }) => {
       // Fallback: Still open WhatsApp even if silent capture fails
       const message = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
       const encoded = encodeURIComponent(message);
-      window.open(`https://wa.me/917448222924?text=${encoded}`, '_blank');
+      window.open(`https://wa.me/91${PRIMARY_PHONE}?text=${encoded}`, '_blank');
       setStatus('success');
       setTimeout(onClose, 2500);
     }

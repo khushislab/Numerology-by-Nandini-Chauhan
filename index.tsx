@@ -10,6 +10,8 @@ import {
 
 // --- CONFIG ---
 const NEWSLETTER_URL = process.env.NEWSLETTER_URL || 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';
+const PRIMARY_PHONE = "7588316966";
+const SECONDARY_PHONE = "7448222924";
 
 // --- COMPONENTS ---
 
@@ -126,7 +128,7 @@ const Hero: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => (
         <button onClick={onBookClick} className="w-full md:w-auto flex items-center justify-center gap-3 bg-blush-400 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-blush-500 transition-all shadow-xl transform hover:-translate-y-1 active:scale-95">
           <PhoneCall size={22} /> Book a Call — Let’s Talk It Through
         </button>
-        <a href="https://wa.me/917448222924?text=Hi Nandini, I want to ask a question before booking a consultation." target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-gray-700 border-2 border-blush-200 px-10 py-5 rounded-full text-xl font-bold hover:bg-blush-50 transition-all shadow-md active:scale-95">
+        <a href={`https://wa.me/91${PRIMARY_PHONE}?text=Hi Nandini, I want to ask a question before booking a consultation.`} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-gray-700 border-2 border-blush-200 px-10 py-5 rounded-full text-xl font-bold hover:bg-blush-50 transition-all shadow-md active:scale-95">
           <MessageCircle size={22} className="text-green-500" /> Chat on WhatsApp — Ask First
         </a>
       </div>
@@ -352,10 +354,17 @@ const Contact: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => (
       <div className="inline-block group scale-110 md:scale-125">
         <button onClick={onBookClick} className="flex items-center gap-4 bg-blush-400 text-white px-14 py-7 rounded-full text-2xl font-bold shadow-2xl hover:bg-blush-500 transition-all transform hover:-translate-y-2 active:scale-95"><PhoneCall size={32} /> Book Your Consultation</button>
       </div>
-      <div className="mt-20 flex flex-col items-center gap-3">
-        <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-xs mb-2">Direct Contact</p>
-        <div className="text-blush-400 font-bold text-3xl cursor-default">+91 7448222924</div>
-        <div className="w-12 h-1 bg-blush-100 rounded-full mt-4"></div>
+      <div className="mt-20 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+        <div className="flex flex-col items-center gap-3 p-8 rounded-3xl bg-blush-100/30 border border-blush-100">
+          <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-2">Primary Contact</p>
+          <div className="text-blush-500 font-bold text-2xl md:text-3xl cursor-default tracking-tight">+{PRIMARY_PHONE}</div>
+          <div className="w-10 h-1 bg-blush-200 rounded-full mt-2"></div>
+        </div>
+        <div className="flex flex-col items-center gap-3 p-8 rounded-3xl bg-gray-50/50 border border-gray-100">
+          <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-2">Secondary Contact</p>
+          <div className="text-gray-600 font-bold text-2xl md:text-3xl cursor-default tracking-tight">+{SECONDARY_PHONE}</div>
+          <div className="w-10 h-1 bg-gray-200 rounded-full mt-2"></div>
+        </div>
       </div>
     </div>
     <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-blush-100/30 to-transparent"></div>
@@ -383,6 +392,9 @@ const Footer: React.FC = () => {
           <div className="space-y-6">
             <span className="flex flex-col"><span className="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400 leading-none mb-1">Numerology By</span><span className="text-2xl font-bold text-gray-900 leading-none">Nandini <span className="text-blush-400">Chauhan</span></span></span>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.</p>
+            <div className="flex items-center gap-4 text-xs font-bold text-gray-400 tracking-widest uppercase">
+               <span>Main: {PRIMARY_PHONE}</span>
+            </div>
           </div>
           <div><h4 className="font-bold text-gray-900 mb-6 uppercase tracking-widest text-xs">Quick Links</h4><ul className="space-y-3 text-sm text-gray-500"><li><a href="#home" className="hover:text-pink-600 transition-colors">Home</a></li><li><a href="#about" className="hover:text-pink-600 transition-colors">About Us</a></li><li><a href="#services" className="hover:text-pink-600 transition-colors">All Services</a></li><li><a href="#faq" className="hover:text-pink-600 transition-colors">Common FAQs</a></li></ul></div>
           <div className="space-y-6">
@@ -422,9 +434,9 @@ const BookingModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }).toString(),
       });
       
-      // Auto-trigger WhatsApp message
+      // Auto-trigger WhatsApp message to Primary
       const msg = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
-      window.open(`https://wa.me/917448222924?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/91${PRIMARY_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
       
       setStatus('success');
       // Briefly show success then close
@@ -432,7 +444,7 @@ const BookingModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     } catch (err) {
       // Even if network fails, we still try to open WhatsApp as a fallback
       const msg = `Hi Nandini, I want to book a numerology consultation. \n\nMy name is ${formData.name} \nMy Phone: ${formData.phone} \nSelected Service: ${formData.service}`;
-      window.open(`https://wa.me/917448222924?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/91${PRIMARY_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
       setStatus('success');
       setTimeout(onClose, 2500);
     }
@@ -493,7 +505,7 @@ const App: React.FC = () => {
         <Contact onBookClick={openBooking} />
       </main>
       <Footer />
-      <a href="https://wa.me/917448222924" target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-green-500 text-white px-5 py-3 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 active:scale-95 group"><div className="hidden md:block overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-xs transition-all duration-500 font-bold">Chat Now</div><MessageCircle size={28} /></a>
+      <a href={`https://wa.me/91${PRIMARY_PHONE}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-green-500 text-white px-5 py-3 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 active:scale-95 group"><div className="hidden md:block overflow-hidden whitespace-nowrap max-w-0 group-hover:max-w-xs transition-all duration-500 font-bold">Chat Now</div><MessageCircle size={28} /></a>
       {isBookingOpen && <BookingModal onClose={closeBooking} />}
     </div>
   );

@@ -1,9 +1,13 @@
+
 import React from 'react';
 import { PhoneCall } from 'lucide-react';
 
 interface ContactProps {
   onBookClick: () => void;
 }
+
+const PRIMARY_PHONE = "7588316966";
+const SECONDARY_PHONE = "7448222924";
 
 const Contact: React.FC<ContactProps> = ({ onBookClick }) => {
   return (
@@ -19,7 +23,7 @@ const Contact: React.FC<ContactProps> = ({ onBookClick }) => {
           </p>
         </div>
         
-        <div className="inline-block group scale-110 md:scale-125">
+        <div className="inline-block group scale-110 md:scale-125 mb-24">
           <button 
             onClick={onBookClick}
             className="flex items-center gap-4 bg-blush-400 text-white px-14 py-7 rounded-full text-2xl font-bold shadow-2xl hover:bg-blush-500 transition-all transform hover:-translate-y-2 active:scale-95"
@@ -29,12 +33,25 @@ const Contact: React.FC<ContactProps> = ({ onBookClick }) => {
           </button>
         </div>
         
-        <div className="mt-20 flex flex-col items-center gap-3">
-          <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-xs mb-2">Direct Contact</p>
-          <div className="text-blush-400 font-bold text-3xl cursor-default">
-            +91 7448222924
+        <div className="mt-20">
+          <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-xs mb-8">Reach Out Directly</p>
+          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="bg-blush-100/30 p-8 rounded-[2.5rem] border border-blush-100 group hover:border-blush-400 transition-all duration-300">
+              <span className="block text-[10px] font-black text-blush-400 uppercase tracking-[0.3em] mb-3">Primary</span>
+              <div className="text-blush-600 font-bold text-2xl md:text-3xl tracking-tighter">
+                +{PRIMARY_PHONE}
+              </div>
+              <div className="w-8 h-1 bg-blush-200 rounded-full mt-4 mx-auto group-hover:w-16 transition-all"></div>
+            </div>
+            
+            <div className="bg-gray-50/50 p-8 rounded-[2.5rem] border border-gray-100 group hover:border-gray-300 transition-all duration-300">
+              <span className="block text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-3">Secondary</span>
+              <div className="text-gray-700 font-bold text-2xl md:text-3xl tracking-tighter">
+                +{SECONDARY_PHONE}
+              </div>
+              <div className="w-8 h-1 bg-gray-200 rounded-full mt-4 mx-auto group-hover:w-16 transition-all"></div>
+            </div>
           </div>
-          <div className="w-12 h-1 bg-blush-100 rounded-full mt-4"></div>
         </div>
       </div>
       

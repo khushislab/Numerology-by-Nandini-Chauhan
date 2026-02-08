@@ -1,5 +1,9 @@
+
 import React, { useState } from 'react';
 import { ArrowUp, Send, Loader2 } from 'lucide-react';
+
+const PRIMARY_PHONE = "7588316966";
+const SECONDARY_PHONE = "7448222924";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -64,6 +68,11 @@ const Footer: React.FC = () => {
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.
             </p>
+            <div className="space-y-1">
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Connect</p>
+              <p className="text-xs text-gray-500">Primary: +{PRIMARY_PHONE}</p>
+              <p className="text-xs text-gray-500">Secondary: +{SECONDARY_PHONE}</p>
+            </div>
           </div>
           
           <div>
