@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { 
@@ -91,7 +90,7 @@ const Navbar: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex flex-col group">
           <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400 group-hover:text-blush-400 transition-colors leading-none mb-1">Numerology By</span>
-          <span className="text-xl md:text-2xl font-bold text-gray-900 leading-none">Nandini <span className="text-blush-400">Chauhan</span></span>
+          <span className="text-xl md:text-2xl font-bold text-gray-900 leading-none">Nandini <span className="text-blush-400">Chauhaan</span></span>
         </a>
         <div className="hidden lg:flex space-x-8 items-center">
           {navLinks.map((link) => (
@@ -159,14 +158,14 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="relative group">
             <div className="aspect-[4/5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl relative z-10 ring-8 ring-white/40 transition-transform duration-500 hover:scale-[1.02]">
-              <img src="https://i.ibb.co/ym81L0YS/Gemini-Generated-Image-3d3xsn3d3xsn3d3x.png" alt="Nandini Chauhan" className="w-full h-full object-cover" />
+              <img src="https://i.ibb.co/ym81L0YS/Gemini-Generated-Image-3d3xsn3d3xsn3d3x.png" alt="Nandini Chauhaan" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-8 -left-8 w-full h-full border-2 border-blush-200 rounded-[3rem] md:rounded-[4rem] -z-10 opacity-50"></div>
           </div>
           <div className="space-y-8">
-            <div><h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Nandini <span className="text-blush-400">Chauhan</span></h2><div className="w-20 h-1.5 bg-blush-300 rounded-full"></div></div>
+            <div><h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Nandini <span className="text-blush-400">Chauhaan</span></h2><div className="w-20 h-1.5 bg-blush-300 rounded-full"></div></div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-              <p>Hi, I’m Nandini Chauhan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.</p>
+              <p>Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.</p>
               <p className="text-2xl text-gray-800 border-l-4 border-blush-200 pl-6 py-2 font-medium">"I show you how to align with the cosmic numbers that were always meant to lead you."</p>
             </div>
             <div className="pt-6">
@@ -277,7 +276,7 @@ const Value: React.FC = () => (
 
 const Testimonials: React.FC = () => {
   const reviews = [
-    { name: "Khushi Chauhan", quote: "After our call, I felt like a weight was lifted. I knew exactly what to do. Now I'm in my dream role!" },
+    { name: "Khushi Chauhaan", quote: "After our call, I felt like a weight was lifted. I knew exactly what to do. Now I'm in my dream role!" },
     { name: "Bhavyaa", quote: "Learning my numbers helped me accept myself. I feel so much more calm and peaceful now." },
     { name: "Shivani Singh", quote: "The yearly forecast showed me it was just a waiting phase. I stayed patient, and now we're growing again." },
     { name: "Mrunmayee Mahajan", quote: "Wow...amazinggg....I mean what an insight" }
@@ -390,7 +389,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           <div className="space-y-6">
-            <span className="flex flex-col"><span className="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400 leading-none mb-1">Numerology By</span><span className="text-2xl font-bold text-gray-900 leading-none">Nandini <span className="text-blush-400">Chauhan</span></span></span>
+            <span className="flex flex-col"><span className="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400 leading-none mb-1">Numerology By</span><span className="text-2xl font-bold text-gray-900 leading-none">Nandini <span className="text-blush-400">Chauhaan</span></span></span>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.</p>
             <div className="flex items-center gap-4 text-xs font-bold text-gray-400 tracking-widest uppercase">
                <span>Main: {PRIMARY_PHONE}</span>
@@ -406,7 +405,7 @@ const Footer: React.FC = () => {
             </form>
           </div>
         </div>
-        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6"><p className="text-xs text-gray-400">© 2026 Numerology by Nandini Chauhan. All rights reserved.</p></div>
+        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6"><p className="text-xs text-gray-400">© 2026 Numerology by Nandini Chauhaan. All rights reserved.</p></div>
       </div>
     </footer>
   );

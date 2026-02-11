@@ -39,7 +39,7 @@ const About: React.FC = () => {
             <div className="aspect-[4/5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl relative z-10 ring-8 ring-white/40 transition-transform duration-500 hover:scale-[1.02]">
               <img 
                 src="https://i.ibb.co/ym81L0YS/Gemini-Generated-Image-3d3xsn3d3xsn3d3x.png" 
-                alt="Nandini Chauhan" 
+                alt="Nandini Chauhaan" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -49,14 +49,14 @@ const About: React.FC = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                Nandini <span className="text-blush-400">Chauhan</span>
+                Nandini <span className="text-blush-400">Chauhaan</span>
               </h2>
               <div className="w-20 h-1.5 bg-blush-300 rounded-full"></div>
             </div>
             
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Hi, I’m Nandini Chauhan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.
+                Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.
               </p>
               <p className="text-2xl text-gray-800 border-l-4 border-blush-200 pl-6 py-2 font-medium">
                 "I show you how to align with the cosmic numbers that were always meant to lead you."

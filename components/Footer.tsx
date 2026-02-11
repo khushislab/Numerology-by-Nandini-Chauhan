@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ArrowUp, Send, Loader2 } from 'lucide-react';
 
@@ -62,7 +61,7 @@ const Footer: React.FC = () => {
                 Numerology By
               </span>
               <span className="text-2xl font-bold text-gray-900 leading-none">
-                Nandini <span className="text-blush-400">Chauhan</span>
+                Nandini <span className="text-blush-400">Chauhaan</span>
               </span>
             </a>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
@@ -115,7 +114,7 @@ const Footer: React.FC = () => {
         
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-gray-400">
-            © 2026 Numerology by Nandini Chauhan. All rights reserved.
+            © 2026 Numerology by Nandini Chauhaan. All rights reserved.
           </p>
           <button 
             onClick={scrollToTop}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -53,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             Numerology By
           </span>
           <span className="text-xl md:text-2xl font-bold text-gray-900 leading-none">
-            Nandini <span className="text-blush-400">Chauhan</span>
+            Nandini <span className="text-blush-400">Chauhaan</span>
           </span>
         </a>
 
