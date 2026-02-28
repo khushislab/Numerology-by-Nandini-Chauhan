@@ -56,7 +56,7 @@ const About: React.FC = () => {
             
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.
+                Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you—one that works with your number alignment, not against it.
               </p>
               <p className="text-2xl text-gray-800 border-l-4 border-blush-200 pl-6 py-2 font-medium">
                 "I show you how to align with the cosmic numbers that were always meant to lead you."
