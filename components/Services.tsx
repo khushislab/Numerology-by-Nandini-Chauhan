@@ -45,19 +45,19 @@ const services: ServiceItem[] = [
   },
   {
     name: "House / Property",
-    price: 399,
+    price: 799,
     description: "Ensure your home is a place of rest.",
     outcomes: ["Sleep better at night", "Feel happy being home", "Positive family time", "Remove heavy feelings"]
   },
   {
     name: "Mobile Number",
-    price: 399,
+    price: 499,
     description: "Your digital identity matters too.",
     outcomes: ["Better calls and messages", "Help your business grow", "Clearer communication", "Positive digital vibes"]
   },
   {
     name: "Yearly Forecast",
-    price: 399,
+    price: 499,
     description: "Know what to expect in the coming 12 months.",
     outcomes: ["Plan your year better", "Avoid unnecessary risks", "Know when to wait or act", "Less surprises, more peace"]
   },
