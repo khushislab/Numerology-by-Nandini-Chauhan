@@ -165,7 +165,7 @@ const About: React.FC = () => {
           <div className="space-y-8">
             <div><h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Nandini <span className="text-blush-400">Chauhaan</span></h2><div className="w-20 h-1.5 bg-blush-300 rounded-full"></div></div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-              <p>Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I’ve spent many years understanding how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.</p>
+              <p>Hi, I’m Nandini Chauhaan. I know life can feel heavy and confusing when you don’t know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction. My focus is to listen to you first and help you see the patterns in your own life clearly. Together, we find a path that feels natural to you — one that works with your number alignment, not against it.</p>
               <p className="text-2xl text-gray-800 border-l-4 border-blush-200 pl-6 py-2 font-medium">"I show you how to align with the cosmic numbers that were always meant to lead you."</p>
             </div>
             <div className="pt-6">
@@ -196,9 +196,9 @@ const Services: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
     { name: "Career & Business", price: 799, description: "Find the right work path for financial peace.", outcomes: ["Choose the right job or business", "Pick the best dates for deals", "Attract better growth", "Feel confident in work"] },
     { name: "Name Analysis / Correction", price: 399, description: "Check if your name energy matches your goals.", outcomes: ["Remove small blocks in life", "Feel more lucky and positive", "Improve your daily energy", "Better first impressions"] },
     { name: "Baby Name Numerology", price: 800, description: "Gift your child a name that brings balance.", outcomes: ["Give them a balanced start", "Support their natural talents", "Peaceful family energy", "A life full of harmony"] },
-    { name: "House / Property", price: 399, description: "Ensure your home is a place of rest.", outcomes: ["Sleep better at night", "Feel happy being home", "Positive family time", "Remove heavy feelings"] },
-    { name: "Mobile Number", price: 399, description: "Your digital identity matters too.", outcomes: ["Better calls and messages", "Help your business grow", "Clearer communication", "Positive digital vibes"] },
-    { name: "Yearly Forecast", price: 399, description: "Know what to expect in the coming 12 months.", outcomes: ["Plan your year better", "Avoid unnecessary risks", "Know when to wait or act", "Less surprises, more peace"] },
+    { name: "House / Property", price: 799, description: "Ensure your home is a place of rest.", outcomes: ["Sleep better at night", "Feel happy being home", "Positive family time", "Remove heavy feelings"] },
+    { name: "Mobile Number", price: 499, description: "Your digital identity matters too.", outcomes: ["Better calls and messages", "Help your business grow", "Clearer communication", "Positive digital vibes"] },
+    { name: "Yearly Forecast", price: 499, description: "Know what to expect in the coming 12 months.", outcomes: ["Plan your year better", "Avoid unnecessary risks", "Know when to wait or act", "Less surprises, more peace"] },
     { name: "Emotional Healing", price: 599, description: "Special guidance for tough times.", outcomes: ["Release old hurts", "Stop overthinking", "Find emotional strength", "Wake up feeling lighter"] },
     { name: "Life Pattern Analysis", price: 699, description: "Deep dive into recurring life cycles.", outcomes: ["Break old habits", "Find why life repeats", "Master your time cycles", "Feel in control of life"] }
   ];
