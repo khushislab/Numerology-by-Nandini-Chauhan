@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { 
   Menu, X, MessageCircle, PhoneCall, Check, 
   MousePointer2, Sparkles, ShieldCheck, ChevronDown, ChevronUp, Send, Loader2,
-  CheckCircle2, Instagram, Facebook, Clock, User, Shield
+  CheckCircle2, Instagram, Facebook, Clock, User, Shield, ArrowRight
 } from 'lucide-react';
 
 // --- CONFIG ---
@@ -73,56 +73,76 @@ const Navbar: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
-      window.scrollTo({ top: element.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+      window.scrollTo({ top: element.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
     }
   };
 
   const navLinks = [
     { name: 'Home', href: '#home' },
+    { name: 'Free Reading', href: '#free-reading', highlight: true },
     { name: 'About', href: '#about' },
     { name: 'Service', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2.5 sm:py-3' : 'bg-white/90 md:bg-transparent backdrop-blur-sm py-3 sm:py-4'}`}>
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Brand Logo */}
-        <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex flex-col group shrink-0">
-          <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-gray-500 group-hover:text-pink-700 transition-colors leading-none mb-0.5 sm:mb-1">
-            Numerology By
-          </span>
-          <span className="text-base sm:text-xl md:text-2xl font-extrabold text-gray-900 leading-none">
-            Nandinii <span className="text-pink-700">Chauhan</span>
-          </span>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Thin Banner at the very top */}
+      <div className="bg-pink-700 text-white text-[10px] sm:text-xs py-1.5 px-3 text-center font-medium flex items-center justify-center gap-1.5 sm:gap-2 shadow-xs">
+        <span className="w-1.5 h-1.5 rounded-full bg-pink-200 animate-ping shrink-0"></span>
+        <span className="font-semibold">✨ Special: Free Readings every Thursday & Saturday (10–11 AM)</span>
+        <a 
+          href="#free-reading" 
+          onClick={(e) => handleLinkClick(e, '#free-reading')} 
+          className="underline hover:text-pink-200 font-bold whitespace-nowrap ml-1 cursor-pointer"
+        >
+          Apply Now →
         </a>
-        
-        {/* Quick Navigation Panel (Visible directly on both desktop and mobile) */}
-        <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
-          <div className="flex items-center gap-1.5 sm:gap-4 md:gap-7">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                onClick={(e) => handleLinkClick(e, link.href)} 
-                className="text-[11px] sm:text-xs md:text-sm font-bold text-gray-700 hover:text-pink-700 transition-colors uppercase tracking-wider whitespace-nowrap px-1 sm:px-1.5 py-1"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          {/* Book Call CTA button */}
-          <button 
-            onClick={onBookClick}
-            className="bg-pink-700 hover:bg-pink-800 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full shadow transition-all active:scale-95 whitespace-nowrap shrink-0"
-          >
-            <span className="hidden sm:inline">Book Call</span>
-            <span className="sm:hidden">Book</span>
-          </button>
-        </div>
       </div>
-    </nav>
+
+      <nav className={`transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2 sm:py-2.5' : 'bg-white/95 md:bg-white/90 backdrop-blur-sm py-2.5 sm:py-3 border-b border-pink-100/60'}`}>
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
+          {/* Brand Logo */}
+          <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex flex-col group shrink-0">
+            <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-gray-500 group-hover:text-pink-700 transition-colors leading-none mb-0.5">
+              Numerology By
+            </span>
+            <span className="text-sm sm:text-lg md:text-xl font-extrabold text-gray-900 leading-none">
+              Nandinii <span className="text-pink-700">Chauhan</span>
+            </span>
+          </a>
+          
+          {/* Quick Navigation Panel */}
+          <div className="flex items-center gap-1.5 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-1 sm:gap-3 md:gap-5">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={(e) => handleLinkClick(e, link.href)} 
+                  className={`text-[10px] sm:text-xs md:text-sm font-bold transition-colors uppercase tracking-wider whitespace-nowrap px-1 sm:px-1.5 py-1 ${
+                    link.highlight 
+                      ? 'text-pink-700 hover:text-pink-800 font-extrabold bg-pink-50 rounded-md' 
+                      : 'text-gray-700 hover:text-pink-700'
+                  }`}
+                >
+                  {link.highlight ? '✨ Free Reading' : link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Book Call CTA button */}
+            <button 
+              onClick={onBookClick}
+              className="bg-pink-700 hover:bg-pink-800 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow transition-all active:scale-95 whitespace-nowrap shrink-0"
+            >
+              <span className="hidden sm:inline">Book Call</span>
+              <span className="sm:hidden">Book</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 };
 
@@ -188,32 +208,326 @@ const Hero: React.FC<{ onBookClick: (serviceName?: string) => void }> = ({ onBoo
   );
 };
 
+// --- FREE READING SECTION ---
+const FreeReading: React.FC<{ onApplyClick: () => void }> = ({ onApplyClick }) => {
+  return (
+    <section id="free-reading" className="py-16 sm:py-20 bg-pink-50/80 border-y border-pink-100 px-4 sm:px-6 relative overflow-hidden scroll-mt-24">
+      {/* Subtle background ambient blur */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-pink-200/30 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+      <div className="max-w-4xl mx-auto">
+        {/* Animated blinking special card */}
+        <div className="blink-card bg-white/95 rounded-3xl p-6 sm:p-10 md:p-12 border-2 border-pink-300 shadow-xl relative overflow-hidden">
+          
+          {/* Top highlight ribbon / badge */}
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
+            <div className="blink-tag inline-flex items-center gap-2 bg-pink-100 text-pink-800 border border-pink-200 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-xs">
+              <Sparkles size={16} className="text-pink-600" />
+              <span>SPECIAL: FREE READING</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-pink-700 bg-pink-50 px-3 py-1 rounded-full border border-pink-200/60">
+              <Clock size={14} />
+              <span>Thu & Sat (10:00 – 11:00 AM IST)</span>
+            </div>
+          </div>
+
+          {/* Headline */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight mb-4">
+            A free reading for someone who needs it.
+          </h2>
+
+          {/* Description */}
+          <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl font-normal">
+            Not everyone can pay for guidance right now. Every Thursday and Saturday, Nandini gives free readings to people who need them.
+          </p>
+
+          {/* How it works */}
+          <div className="bg-pink-50/50 rounded-2xl p-5 sm:p-7 border border-pink-100/80 mb-8">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-pink-700"></span>
+              How it works
+            </h3>
+            
+            <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+              {/* Step 1 */}
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-pink-100 text-pink-800 font-extrabold flex items-center justify-center text-sm shrink-0 border border-pink-200">
+                  1
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 leading-snug">
+                    Fill out a short form.
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    It takes one minute.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-pink-100 text-pink-800 font-extrabold flex items-center justify-center text-sm shrink-0 border border-pink-200">
+                  2
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 leading-snug">
+                    Winners are picked by a fair draw.
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Completely transparent.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-pink-100 text-pink-800 font-extrabold flex items-center justify-center text-sm shrink-0 border border-pink-200">
+                  3
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 leading-snug">
+                    Winners get a free reading
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    On Thursday or Saturday, 10–11 AM.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Button & Disclaimer */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <button
+              onClick={onApplyClick}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-pink-700 hover:bg-pink-800 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+            >
+              <span>Apply for a Free Reading</span>
+              <ArrowRight size={18} />
+            </button>
+            <div className="flex items-center gap-2 text-xs text-gray-500 font-medium">
+              <ShieldCheck size={16} className="text-pink-600 shrink-0" />
+              <span>Your details stay 100% private.</span>
+            </div>
+          </div>
+
+          {/* Microcopy disclaimer */}
+          <p className="text-xs sm:text-sm text-gray-500 font-medium mt-5 leading-relaxed pt-5 border-t border-gray-100">
+            Spots are limited. Not picked this time? You can apply again next week. Your details stay private.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- FREE READING APPLICATION MODAL ---
+const FreeReadingModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    dob: '',
+    guidanceNeed: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) return;
+
+    const text = `✨ *Application for Free Reading Draw* ✨\n\n` +
+      `*Name:* ${formData.name}\n` +
+      `*WhatsApp:* ${formData.phone}\n` +
+      (formData.email ? `*Email:* ${formData.email}\n` : '') +
+      (formData.dob ? `*Date of Birth:* ${formData.dob}\n` : '') +
+      (formData.guidanceNeed ? `*Guidance Needed In:* ${formData.guidanceNeed}\n` : '') +
+      `\n_Applying for Thursday / Saturday (10-11 AM) free reading draw._`;
+
+    const whatsappUrl = `https://wa.me/91${PRIMARY_PHONE}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+    setIsSubmitted(true);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-pink-100 max-h-[90vh] overflow-y-auto">
+        <button 
+          onClick={onClose}
+          className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-50 hover:bg-gray-100 p-2 rounded-full transition-colors"
+          aria-label="Close modal"
+        >
+          <X size={20} />
+        </button>
+
+        {!isSubmitted ? (
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase tracking-wider text-pink-700 bg-pink-100 px-3 py-1 rounded-full">
+                <Sparkles size={13} />
+                Special: Free Reading Draw
+              </span>
+            </div>
+
+            <h3 className="text-2xl font-extrabold text-gray-900 leading-tight">
+              Apply for a Free Reading
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed">
+              Takes just one minute. Every Thursday & Saturday (10–11 AM), Nandini selects recipients through a fair draw.
+            </p>
+
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                  Your Full Name *
+                </label>
+                <input 
+                  type="text" 
+                  name="name" 
+                  required
+                  placeholder="e.g. Aarti Sharma"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                    WhatsApp Number *
+                  </label>
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    required
+                    placeholder="10-digit number"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                    Date of Birth
+                  </label>
+                  <input 
+                    type="text" 
+                    name="dob" 
+                    placeholder="DD/MM/YYYY"
+                    value={formData.dob}
+                    onChange={handleInputChange}
+                    className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                  Email Address (Optional)
+                </label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="name@example.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                  What guidance are you seeking right now? (Optional)
+                </label>
+                <textarea 
+                  name="guidanceNeed" 
+                  rows={2}
+                  placeholder="e.g. Career decision, personal clarity, or relationship transition..."
+                  value={formData.guidanceNeed}
+                  onChange={handleInputChange}
+                  className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none resize-none"
+                />
+              </div>
+
+              <div className="pt-2">
+                <button 
+                  type="submit"
+                  className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 px-6 rounded-full transition-all shadow-md active:scale-98 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer"
+                >
+                  <Send size={16} />
+                  <span>Submit Free Reading Application</span>
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between pt-2 text-[11px] text-gray-500 font-medium">
+                <span className="flex items-center gap-1">
+                  <ShieldCheck size={14} className="text-pink-600" />
+                  Your details stay private
+                </span>
+                <span className="flex items-center gap-1">
+                  <Clock size={14} className="text-pink-600" />
+                  Draws: Thu & Sat
+                </span>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <div className="w-16 h-16 bg-pink-100 text-pink-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-pink-200">
+              <CheckCircle2 size={36} />
+            </div>
+            <h4 className="text-2xl font-extrabold text-gray-900 mb-2">Application Received!</h4>
+            <p className="text-sm text-gray-600 max-w-sm mx-auto leading-relaxed mb-6">
+              Thank you, <span className="font-semibold text-gray-900">{formData.name}</span>. Your entry has been added to this week's fair draw. Nandini will reach out directly on WhatsApp if your name is drawn.
+            </p>
+            <button 
+              onClick={onClose}
+              className="bg-pink-700 hover:bg-pink-800 text-white font-bold px-8 py-2.5 rounded-full text-sm transition-all"
+            >
+              Close
+            </button>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+};
+
 // --- ABOUT ---
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-pink-50/40 px-6 scroll-mt-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="about" className="py-20 md:py-24 bg-pink-50/40 px-6 scroll-mt-20">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           
-          {/* Portrait with high-contrast frame */}
-          <div className="relative group">
-            <div className="aspect-[4/5] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl relative z-10 ring-8 ring-white transition-transform duration-500 hover:scale-[1.01]">
+          {/* Portrait with balanced sizing matching intro text */}
+          <div className="relative group w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] mx-auto">
+            <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl relative z-10 ring-4 sm:ring-6 ring-white transition-transform duration-500 hover:scale-[1.01] bg-pink-50">
               <img 
-                src="https://i.ibb.co/ym81L0YS/Gemini-Generated-Image-3d3xsn3d3xsn3d3x.png" 
+                src="/nandini-chauhan.jpg" 
                 alt="Nandinii Chauhan - Numerologist" 
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-cover object-top"
+                loading="eager"
+                onError={(e) => {
+                  e.currentTarget.src = "https://plain-apac-prod-public.komododecks.com/202609/21/d3vg3vNXUQ6ERrND2d31/image.jpg";
+                }}
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 w-full h-full border-2 border-pink-200 rounded-[2.5rem] md:rounded-[3.5rem] -z-10 opacity-70"></div>
+            <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-pink-200 rounded-[2rem] md:rounded-[2.5rem] -z-10 opacity-70"></div>
           </div>
           
           {/* Bio & Intro Requested by User */}
           <div className="space-y-6">
             <div>
-              <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3.5 py-1 rounded-full">
-                Meet Your Numerologist
-              </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mt-3 mb-2">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
                 Nandinii <span className="text-pink-700">Chauhan</span>
               </h2>
               <div className="w-16 h-1.5 bg-pink-700 rounded-full"></div>
@@ -327,8 +641,8 @@ const servicesList: ServiceItem[] = [
   {
     name: "House / Property",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Check if a home or shop suits you.",
     outcomes: [
       "Check your house, flat, plot or shop number",
@@ -388,8 +702,8 @@ const servicesList: ServiceItem[] = [
   {
     name: "Muhurat (Auspicious Timing)",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Pick the best date and time for something important.",
     outcomes: [
       "Weddings, housewarming and travel",
@@ -400,8 +714,8 @@ const servicesList: ServiceItem[] = [
   {
     name: "Medical Numerology",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Gentle wellness guidance from your numbers. Not medical advice.",
     outcomes: [
       "Body areas that may need extra care",
@@ -478,9 +792,6 @@ const Services: React.FC<{ onBookClick: (serviceName?: string) => void }> = ({ o
                       ₹{service.price}
                     </span>
                   </div>
-                  <span className="text-[11px] text-pink-700 font-semibold block mt-0.5">
-                    Launch price now
-                  </span>
                 </div>
 
                 <button 
@@ -976,6 +1287,7 @@ const BookingModal: React.FC<{ onClose: () => void; selectedService?: string | n
 const App: React.FC = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isFreeReadingOpen, setIsFreeReadingOpen] = useState(false);
 
   const openBooking = (serviceName?: string) => {
     setSelectedService(serviceName || null);
@@ -987,12 +1299,16 @@ const App: React.FC = () => {
     setSelectedService(null);
   };
 
+  const openFreeReading = () => setIsFreeReadingOpen(true);
+  const closeFreeReading = () => setIsFreeReadingOpen(false);
+
   return (
     <div className="relative min-h-screen bg-white">
       <FloatingNumbers />
       <Navbar onBookClick={() => openBooking()} />
       <main>
         <Hero onBookClick={openBooking} />
+        <FreeReading onApplyClick={openFreeReading} />
         <About />
         <Services onBookClick={openBooking} />
         <HowItWorks />
@@ -1018,6 +1334,10 @@ const App: React.FC = () => {
 
       {isBookingOpen && (
         <BookingModal onClose={closeBooking} selectedService={selectedService} />
+      )}
+
+      {isFreeReadingOpen && (
+        <FreeReadingModal onClose={closeFreeReading} />
       )}
     </div>
   );

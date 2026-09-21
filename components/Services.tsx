@@ -93,8 +93,8 @@ const services: ServiceItem[] = [
   {
     name: "House / Property",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Check if a home or shop suits you.",
     outcomes: [
       "Check your house, flat, plot or shop number",
@@ -154,8 +154,8 @@ const services: ServiceItem[] = [
   {
     name: "Muhurat (Auspicious Timing)",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Pick the best date and time for something important.",
     outcomes: [
       "Weddings, housewarming and travel",
@@ -166,8 +166,8 @@ const services: ServiceItem[] = [
   {
     name: "Medical Numerology",
     regularPrice: "2,499",
-    price: "1,199",
-    off: "52%",
+    price: "1,139",
+    off: "54%",
     subtitle: "Gentle wellness guidance from your numbers. Not medical advice.",
     outcomes: [
       "Body areas that may need extra care",
@@ -243,9 +243,6 @@ const Services: React.FC<ServicesProps> = ({ onBookClick }) => {
                       ₹{service.price}
                     </span>
                   </div>
-                  <span className="text-[11px] text-pink-700 font-semibold block mt-0.5">
-                    Launch price now
-                  </span>
                 </div>
 
                 <button 

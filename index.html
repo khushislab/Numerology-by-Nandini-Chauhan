@@ -99,6 +99,26 @@
       0% { width: 0%; }
       100% { width: 100%; }
     }
+    @keyframes softBlink {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.4), 0 20px 25px -5px rgba(219, 39, 119, 0.08);
+        border-color: rgba(244, 114, 182, 0.8);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(244, 114, 182, 0.35), 0 25px 35px -5px rgba(219, 39, 119, 0.25);
+        border-color: rgba(190, 24, 93, 1);
+      }
+    }
+    .blink-card {
+      animation: softBlink 2.2s infinite ease-in-out;
+    }
+    @keyframes tagBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.96); }
+    }
+    .blink-tag {
+      animation: tagBlink 1.5s infinite ease-in-out;
+    }
   </style>
   <script type="importmap">
   {

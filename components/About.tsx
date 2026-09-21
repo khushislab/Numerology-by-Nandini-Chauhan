@@ -2,29 +2,30 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-pink-50/40 px-6 scroll-mt-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="about" className="py-20 md:py-24 bg-pink-50/40 px-6 scroll-mt-20">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           
-          {/* Portrait with high-contrast frame */}
-          <div className="relative group">
-            <div className="aspect-[4/5] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl relative z-10 ring-8 ring-white transition-transform duration-500 hover:scale-[1.01]">
+          {/* Portrait with balanced sizing matching intro text */}
+          <div className="relative group w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] mx-auto">
+            <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl relative z-10 ring-4 sm:ring-6 ring-white transition-transform duration-500 hover:scale-[1.01] bg-pink-50">
               <img 
-                src="https://i.ibb.co/ym81L0YS/Gemini-Generated-Image-3d3xsn3d3xsn3d3x.png" 
+                src="/nandini-chauhan.jpg" 
                 alt="Nandinii Chauhan - Numerologist" 
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-cover object-top"
+                loading="eager"
+                onError={(e) => {
+                  e.currentTarget.src = "https://plain-apac-prod-public.komododecks.com/202609/21/d3vg3vNXUQ6ERrND2d31/image.jpg";
+                }}
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 w-full h-full border-2 border-pink-200 rounded-[2.5rem] md:rounded-[3.5rem] -z-10 opacity-70"></div>
+            <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-pink-200 rounded-[2rem] md:rounded-[2.5rem] -z-10 opacity-70"></div>
           </div>
           
           {/* Bio & Intro Requested by User */}
           <div className="space-y-6">
             <div>
-              <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3.5 py-1 rounded-full">
-                Meet Your Numerologist
-              </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mt-3 mb-2">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
                 Nandinii <span className="text-pink-700">Chauhan</span>
               </h2>
               <div className="w-16 h-1.5 bg-pink-700 rounded-full"></div>

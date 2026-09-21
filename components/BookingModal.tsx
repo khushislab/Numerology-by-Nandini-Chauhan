@@ -15,13 +15,13 @@ const availableServices = [
   "Name Analysis and Correction (₹1,499)",
   "Baby Name Numerology (₹1,499)",
   "Litigation / Divorce (₹1,299)",
-  "House / Property (₹1,199)",
+  "House / Property (₹1,139)",
   "Mobile Number (₹1,499)",
   "Yearly Forecast (₹1,499)",
   "Marriage Matching (₹1,299)",
   "Business Partnership Matching (₹1,299)",
-  "Muhurat (Auspicious Timing) (₹1,199)",
-  "Medical Numerology (₹1,199)"
+  "Muhurat (Auspicious Timing) (₹1,139)",
+  "Medical Numerology (₹1,139)"
 ];
 
 const BookingModal: React.FC<BookingModalProps> = ({ onClose, selectedService }) => {
