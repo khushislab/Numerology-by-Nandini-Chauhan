@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <span className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 leading-none mb-1">Numerology By</span>
-              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii <span className="text-pink-700">Chauhan</span></span>
+              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii J <span className="text-pink-700">Chauhan</span></span>
             </span>
             <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
               Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>© 2026 Numerology by Nandinii Chauhan. All rights reserved.</p>
+          <p>© 2026 Numerology by Nandinii J Chauhan. All rights reserved.</p>
           <p>Designed with care for peaceful clarity.</p>
         </div>
       </div>

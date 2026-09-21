@@ -11,7 +11,7 @@ const About: React.FC = () => {
             <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl relative z-10 ring-4 sm:ring-6 ring-white transition-transform duration-500 hover:scale-[1.01] bg-pink-50">
               <img 
                 src="/nandini-chauhan.jpg" 
-                alt="Nandinii Chauhan - Numerologist" 
+                alt="Nandinii J Chauhan - Numerologist" 
                 className="w-full h-full object-cover object-top"
                 loading="eager"
                 onError={(e) => {
@@ -26,14 +26,14 @@ const About: React.FC = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
-                Nandinii <span className="text-pink-700">Chauhan</span>
+                Nandinii J <span className="text-pink-700">Chauhan</span>
               </h2>
               <div className="w-16 h-1.5 bg-pink-700 rounded-full"></div>
             </div>
 
             <div className="space-y-4 text-gray-700 leading-relaxed text-base md:text-lg">
               <p>
-                Hi, I'm Nandinii Chauhan. I know life can feel heavy and confusing when you don't know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction.
+                Hi, I'm Nandinii J Chauhan. I know life can feel heavy and confusing when you don't know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction.
               </p>
               <p>
                 I'm certified in Chinese and Pythagorean Numerology, and I hold a master certification in Vedic Numerology.

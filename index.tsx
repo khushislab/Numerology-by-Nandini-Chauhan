@@ -108,7 +108,7 @@ const Navbar: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => {
               Numerology By
             </span>
             <span className="text-sm sm:text-lg md:text-xl font-extrabold text-gray-900 leading-none">
-              Nandinii <span className="text-pink-700">Chauhan</span>
+              Nandinii J <span className="text-pink-700">Chauhan</span>
             </span>
           </a>
           
@@ -513,7 +513,7 @@ const About: React.FC = () => {
             <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl relative z-10 ring-4 sm:ring-6 ring-white transition-transform duration-500 hover:scale-[1.01] bg-pink-50">
               <img 
                 src="/nandini-chauhan.jpg" 
-                alt="Nandinii Chauhan - Numerologist" 
+                alt="Nandinii J Chauhan - Numerologist" 
                 className="w-full h-full object-cover object-top"
                 loading="eager"
                 onError={(e) => {
@@ -528,14 +528,14 @@ const About: React.FC = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
-                Nandinii <span className="text-pink-700">Chauhan</span>
+                Nandinii J <span className="text-pink-700">Chauhan</span>
               </h2>
               <div className="w-16 h-1.5 bg-pink-700 rounded-full"></div>
             </div>
 
             <div className="space-y-4 text-gray-700 leading-relaxed text-base md:text-lg">
               <p>
-                Hi, I'm Nandinii Chauhan. I know life can feel heavy and confusing when you don't know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction.
+                Hi, I'm Nandinii J Chauhan. I know life can feel heavy and confusing when you don't know what step to take next. I understand how numbers quietly shape our choices, emotions, and direction.
               </p>
               <p>
                 I'm certified in Chinese and Pythagorean Numerology, and I hold a master certification in Vedic Numerology.
@@ -1053,7 +1053,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <span className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 leading-none mb-1">Numerology By</span>
-              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii <span className="text-pink-700">Chauhan</span></span>
+              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii J <span className="text-pink-700">Chauhan</span></span>
             </span>
             <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
               Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.
@@ -1121,7 +1121,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>© 2026 Numerology by Nandinii Chauhan. All rights reserved.</p>
+          <p>© 2026 Numerology by Nandinii J Chauhan. All rights reserved.</p>
           <p>Designed with care for peaceful clarity.</p>
         </div>
       </div>

@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               Numerology By
             </span>
             <span className="text-sm sm:text-lg md:text-xl font-extrabold text-gray-900 leading-none">
-              Nandinii <span className="text-pink-700">Chauhan</span>
+              Nandinii J <span className="text-pink-700">Chauhan</span>
             </span>
           </a>
 
