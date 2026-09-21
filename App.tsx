@@ -4,11 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
-import HowItWorks from './components/HowItWorks';
-import Value from './components/Value';
-import Testimonials from './components/Testimonials';
 import Ethics from './components/Ethics';
-import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -29,11 +25,7 @@ const App: React.FC = () => {
         <Hero onBookClick={openBooking} />
         <About />
         <Services onBookClick={openBooking} />
-        <HowItWorks />
-        <Value />
-        <Testimonials />
         <Ethics />
-        <FAQ />
         <Contact onBookClick={openBooking} />
       </main>
       <Footer />
