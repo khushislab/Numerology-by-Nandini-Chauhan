@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, PhoneCall } from 'lucide-react';
+import { MessageCircle, PhoneCall, Clock, Shield } from 'lucide-react';
 
 interface HeroProps {
   onBookClick: (serviceName?: string) => void;
@@ -46,6 +46,18 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             <MessageCircle size={20} className="text-green-600" /> 
             Chat on WhatsApp
           </a>
+        </div>
+
+        {/* 100% Online Consultation & Working Hours */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-700 font-semibold">
+          <div className="inline-flex items-center gap-2 bg-pink-50/80 border border-pink-200 px-4 py-2 rounded-full shadow-xs">
+            <Shield size={16} className="text-pink-700 shrink-0" />
+            <span>100% Online Consultations (Worldwide)</span>
+          </div>
+          <div className="inline-flex items-center gap-2 bg-pink-50/80 border border-pink-200 px-4 py-2 rounded-full shadow-xs">
+            <Clock size={16} className="text-pink-700 shrink-0" />
+            <span>Working Hours: Mon – Sat, 10:00 AM – 7:30 PM IST</span>
+          </div>
         </div>
 
       </div>

@@ -168,6 +168,18 @@ const Hero: React.FC<{ onBookClick: (serviceName?: string) => void }> = ({ onBoo
           </a>
         </div>
 
+        {/* 100% Online Consultation & Working Hours */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-700 font-semibold">
+          <div className="inline-flex items-center gap-2 bg-pink-50/80 border border-pink-200 px-4 py-2 rounded-full shadow-xs">
+            <Shield size={16} className="text-pink-700 shrink-0" />
+            <span>100% Online Consultations (Worldwide)</span>
+          </div>
+          <div className="inline-flex items-center gap-2 bg-pink-50/80 border border-pink-200 px-4 py-2 rounded-full shadow-xs">
+            <Clock size={16} className="text-pink-700 shrink-0" />
+            <span>Working Hours: Mon – Sat, 10:00 AM – 7:30 PM IST</span>
+          </div>
+        </div>
+
       </div>
 
       {/* Ambient background blur */}
@@ -691,18 +703,6 @@ const Contact: React.FC<{ onBookClick: () => void }> = ({ onBookClick }) => (
               +91 {SECONDARY_PHONE.slice(0, 5)} {SECONDARY_PHONE.slice(5)}
             </a>
             <p className="text-xs text-gray-600 mt-2">Tap to call directly</p>
-          </div>
-        </div>
-
-        {/* Working Hours & Consultation Details */}
-        <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-gray-600 font-semibold">
-          <div className="flex items-center gap-2">
-            <Clock size={16} className="text-pink-700" />
-            <span>Working Hours: Mon – Sat, 10:00 AM – 7:30 PM IST</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Shield size={16} className="text-pink-700" />
-            <span>100% Online Consultations (Worldwide)</span>
           </div>
         </div>
 
