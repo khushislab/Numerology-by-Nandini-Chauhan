@@ -1,128 +1,112 @@
 import React, { useState } from 'react';
-import { ArrowUp, Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, Instagram, Facebook } from 'lucide-react';
 
 const PRIMARY_PHONE = "7588316966";
-const SECONDARY_PHONE = "7448222924";
+const INSTAGRAM_URL = "https://www.instagram.com/numeroby.nandinii?stkn=MW13bHRub2pheGg0Nw==";
+const FACEBOOK_URL = "https://www.facebook.com/share/1FCPVDz1iL/";
+const NEWSLETTER_URL = process.env.NEWSLETTER_URL || 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
     setStatus('loading');
-    
     try {
-      const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';
-      
-      await fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+      await fetch(NEWSLETTER_URL, {
+        method: 'POST', 
+        mode: 'no-cors', 
         body: new URLSearchParams({ email }).toString(),
       });
-      
-      setStatus('success');
+      setStatus('success'); 
       setEmail('');
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
+    } catch (err) { 
+      setStatus('error'); 
     }
   };
 
   return (
-    <footer className="bg-white pt-24 pb-12 px-6 border-t border-pink-50">
+    <footer className="bg-white pt-20 pb-12 px-6 border-t border-pink-100">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
-          <div className="space-y-6">
-            <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex flex-col group">
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400 leading-none mb-1">
-                Numerology By
-              </span>
-              <span className="text-2xl font-bold text-gray-900 leading-none">
-                Nandini <span className="text-blush-400">Chauhan</span>
-              </span>
-            </a>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-14">
+          
+          <div className="space-y-4">
+            <span className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 leading-none mb-1">Numerology By</span>
+              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii <span className="text-pink-700">Chauhan</span></span>
+            </span>
+            <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
               Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.
             </p>
-            <div className="space-y-1">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Connect</p>
-              <p className="text-xs text-gray-500">Primary: +{PRIMARY_PHONE}</p>
-              <p className="text-xs text-gray-500">Secondary: +{SECONDARY_PHONE}</p>
+            <div className="text-xs font-bold text-gray-600 tracking-wider">
+              <span>Direct: +91 {PRIMARY_PHONE}</span>
+            </div>
+            <div className="flex items-center gap-3 pt-2">
+              <a 
+                href={INSTAGRAM_URL}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center text-pink-700 hover:bg-pink-700 hover:text-white transition-all shadow-sm"
+              >
+                <Instagram size={18} />
+              </a>
+              <a 
+                href={FACEBOOK_URL}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center text-pink-700 hover:bg-pink-700 hover:text-white transition-all shadow-sm"
+              >
+                <Facebook size={18} />
+              </a>
             </div>
           </div>
-          
+
           <div>
-            <h4 className="font-bold text-gray-900 mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-            <ul className="space-y-3 text-sm text-gray-500">
-              <li><a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="hover:text-pink-600 transition-colors">Home</a></li>
-              <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-pink-600 transition-colors">About Us</a></li>
-              <li><a href="#services" onClick={(e) => handleLinkClick(e, '#services')} className="hover:text-pink-600 transition-colors">All Services</a></li>
-              <li><a href="#faq" onClick={(e) => handleLinkClick(e, '#faq')} className="hover:text-pink-600 transition-colors">Common FAQs</a></li>
+            <h4 className="font-bold text-gray-900 uppercase tracking-widest text-xs mb-4">Quick Navigation</h4>
+            <ul className="space-y-2.5 text-sm font-semibold text-gray-700">
+              <li><a href="#home" className="hover:text-pink-700 transition-colors">Home</a></li>
+              <li><a href="#about" className="hover:text-pink-700 transition-colors">About Nandinii</a></li>
+              <li><a href="#services" className="hover:text-pink-700 transition-colors">Our Services</a></li>
+              <li><a href="#how-it-works" className="hover:text-pink-700 transition-colors">How It Works</a></li>
+              <li><a href="#faq" className="hover:text-pink-700 transition-colors">Common FAQs</a></li>
+              <li><a href="#contact" className="hover:text-pink-700 transition-colors">Contact</a></li>
             </ul>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="font-bold text-gray-900 uppercase tracking-widest text-xs">Newsletter</h4>
-            <p className="text-xs text-gray-500 leading-relaxed">
-              Subscribe to receive small, kind notes about your numbers. Let these simple tips help you feel a bit more "in flow" every single day.
+          <div className="space-y-4">
+            <h4 className="font-bold text-gray-900 uppercase tracking-widest text-xs">Join Our Newsletter</h4>
+            <p className="text-xs text-gray-700 leading-relaxed">
+              Subscribe to receive small, kind notes about your numbers and upcoming cosmic cycles.
             </p>
             <form className="relative" onSubmit={handleSubmit}>
               <input 
                 type="email" 
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required 
                 placeholder="Enter your email" 
-                className="w-full bg-pink-50 border border-pink-100 rounded-full py-3 px-6 text-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
+                className="w-full bg-pink-50/70 border border-pink-200 rounded-full py-3 px-5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" 
               />
               <button 
-                type="submit"
-                disabled={status === 'loading'}
-                className="absolute right-2 top-1.5 bg-pink-600 text-white p-2 rounded-full hover:bg-pink-700 transition-colors disabled:opacity-50"
+                type="submit" 
+                className="absolute right-1.5 top-1.5 bg-pink-700 text-white p-2 rounded-full hover:bg-pink-800 transition-colors disabled:opacity-50"
               >
                 {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
               </button>
             </form>
-            {status === 'success' && <p className="text-[10px] text-green-600 mt-1 font-bold">Thank you for subscribing 🌸</p>}
-            {status === 'error' && <p className="text-[10px] text-red-500 mt-1">Something went wrong. Please try again.</p>}
+            {status === 'success' && <p className="text-xs text-green-700 font-bold">Thank you for subscribing 🌸</p>}
+            {status === 'error' && <p className="text-xs text-red-600 font-medium">Please try again later.</p>}
           </div>
+
         </div>
-        
-        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-gray-400">
-            © 2026 Numerology by Nandini Chauhan. All rights reserved.
-          </p>
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-xs font-bold text-pink-600 hover:text-pink-800 transition-colors uppercase tracking-widest"
-          >
-            Back to Top
-            <ArrowUp size={14} />
-          </button>
+
+        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+          <p>© 2026 Numerology by Nandinii Chauhan. All rights reserved.</p>
+          <p>Designed with care for peaceful clarity.</p>
         </div>
       </div>
     </footer>

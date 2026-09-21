@@ -1,40 +1,54 @@
 import React from 'react';
-import { MousePointer2, CreditCard, Sparkles } from 'lucide-react';
+import { MousePointer2, User, Sparkles } from 'lucide-react';
 
 const steps = [
   {
-    icon: <MousePointer2 className="w-10 h-10 text-blush-400" />,
-    title: "Choose your consultation",
-    description: "Pick the service that fits your current situation best."
+    num: "01",
+    icon: <MousePointer2 className="w-8 h-8 text-pink-700" />,
+    title: "1. Book a Call or WhatsApp",
+    description: "Pick the reading that fits your question and confirm your preferred slot via our quick form or message Nandinii directly on WhatsApp."
   },
   {
-    icon: <CreditCard className="w-10 h-10 text-blush-400" />,
-    title: "Book & pay securely",
-    description: "Confirm your slot and make a small payment for our time."
+    num: "02",
+    icon: <User className="w-8 h-8 text-pink-700" />,
+    title: "2. Share Name & Date of Birth",
+    description: "Send your official full name, preferred name, and birth date. All personal information is treated with strict confidentiality."
   },
   {
-    icon: <Sparkles className="w-10 h-10 text-blush-400" />,
-    title: "Get clarity on your call",
-    description: "We talk, I listen, and you walk away feeling lighter."
+    num: "03",
+    icon: <Sparkles className="w-8 h-8 text-pink-700" />,
+    title: "3. Get Your Reading & Follow-Up",
+    description: "Connect for a relaxed 45-min 1-on-1 call (phone or video), ask your questions, and receive your written summary guide within 24–48 hours."
   }
 ];
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-blush-100/10 px-6 scroll-mt-20">
+    <section id="how-it-works" className="py-24 bg-pink-50/30 px-6 scroll-mt-20 border-t border-pink-100/50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">It's Very Simple</h2>
-        
-        <div className="grid md:grid-cols-3 gap-12 relative">
-          <div className="hidden md:block absolute top-1/4 left-[10%] right-[10%] h-0.5 bg-blush-200 -z-10"></div>
-          
+        <div className="text-center mb-16">
+          <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3.5 py-1 rounded-full">
+            Simple & Transparent
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 mb-4">
+            How It Works
+          </h2>
+          <p className="text-base sm:text-lg text-gray-700 max-w-xl mx-auto">
+            From booking to consultation, everything is designed to be calm, simple, and reassuring.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 relative">
           {steps.map((step, index) => (
-            <div key={index} className="text-center space-y-4">
-              <div className="w-24 h-24 bg-white rounded-[2rem] shadow-lg flex items-center justify-center mx-auto mb-8 transform rotate-3 hover:rotate-0 transition-transform duration-300 border border-blush-100">
+            <div 
+              key={index} 
+              className="bg-white rounded-3xl p-8 border border-pink-100 shadow-sm hover:shadow-md transition-all text-center space-y-4 relative"
+            >
+              <div className="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center mx-auto border border-pink-200">
                 {step.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">{step.title}</h3>
-              <p className="text-gray-500 leading-relaxed text-lg">{step.description}</p>
+              <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>

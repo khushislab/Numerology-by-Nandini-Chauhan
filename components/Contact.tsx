@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { PhoneCall } from 'lucide-react';
+import { PhoneCall, Clock, Shield } from 'lucide-react';
 
 interface ContactProps {
   onBookClick: () => void;
@@ -11,51 +10,84 @@ const SECONDARY_PHONE = "7448222924";
 
 const Contact: React.FC<ContactProps> = ({ onBookClick }) => {
   return (
-    <section id="contact" className="py-32 px-6 bg-white relative overflow-hidden scroll-mt-20">
+    <section id="contact" className="py-28 px-6 bg-white relative overflow-hidden scroll-mt-20">
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-7xl font-bold text-gray-900 mb-10 leading-tight">
-            "If you reached here, something brought you. <br />
-            <span className="text-blush-400">Trust that feeling.</span>"
+        
+        <div className="mb-14">
+          <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3.5 py-1 rounded-full">
+            Take The Next Step
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mt-4 mb-6 leading-tight">
+            "If you've made it this far, something brought you here. <br />
+            <span className="text-pink-700">Trust that feeling.</span>"
           </h2>
-          <p className="text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-base sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed font-medium">
             Don't stay stuck in confusion. A simple, honest conversation can change everything.
           </p>
         </div>
-        
-        <div className="inline-block group scale-110 md:scale-125 mb-24">
+
+        {/* Main CTA Button */}
+        <div className="mb-16">
           <button 
-            onClick={onBookClick}
-            className="flex items-center gap-4 bg-blush-400 text-white px-14 py-7 rounded-full text-2xl font-bold shadow-2xl hover:bg-blush-500 transition-all transform hover:-translate-y-2 active:scale-95"
+            onClick={onBookClick} 
+            className="inline-flex items-center gap-3 bg-pink-700 hover:bg-pink-800 text-white px-10 py-5 sm:px-12 sm:py-5 rounded-full text-lg sm:text-xl font-bold shadow-xl transition-all transform hover:-translate-y-1 active:scale-95"
           >
-            <PhoneCall size={32} />
+            <PhoneCall size={24} /> 
             Book Your Consultation
           </button>
         </div>
-        
-        <div className="mt-20">
-          <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-xs mb-8">Reach Out Directly</p>
-          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <div className="bg-blush-100/30 p-8 rounded-[2.5rem] border border-blush-100 group hover:border-blush-400 transition-all duration-300">
-              <span className="block text-[10px] font-black text-blush-400 uppercase tracking-[0.3em] mb-3">Primary</span>
-              <div className="text-blush-600 font-bold text-2xl md:text-3xl tracking-tighter">
-                +{PRIMARY_PHONE}
-              </div>
-              <div className="w-8 h-1 bg-blush-200 rounded-full mt-4 mx-auto group-hover:w-16 transition-all"></div>
+
+        {/* Direct Contact Options with Tappable Links */}
+        <div className="max-w-2xl mx-auto">
+          <p className="text-gray-600 font-bold uppercase tracking-[0.2em] text-xs mb-6">
+            Reach Out Directly
+          </p>
+          
+          <div className="grid sm:grid-cols-2 gap-6">
+            {/* Primary Phone Link */}
+            <div className="bg-pink-50/60 p-6 rounded-3xl border border-pink-200">
+              <span className="block text-[11px] font-bold text-pink-800 uppercase tracking-widest mb-1.5">
+                Primary Number (Call & WhatsApp)
+              </span>
+              <a 
+                href={`tel:+91${PRIMARY_PHONE}`} 
+                className="text-pink-800 hover:text-pink-900 font-extrabold text-2xl tracking-tight block hover:underline"
+              >
+                +91 {PRIMARY_PHONE.slice(0, 5)} {PRIMARY_PHONE.slice(5)}
+              </a>
+              <p className="text-xs text-gray-600 mt-2">Tap to call directly</p>
             </div>
-            
-            <div className="bg-gray-50/50 p-8 rounded-[2.5rem] border border-gray-100 group hover:border-gray-300 transition-all duration-300">
-              <span className="block text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-3">Secondary</span>
-              <div className="text-gray-700 font-bold text-2xl md:text-3xl tracking-tighter">
-                +{SECONDARY_PHONE}
-              </div>
-              <div className="w-8 h-1 bg-gray-200 rounded-full mt-4 mx-auto group-hover:w-16 transition-all"></div>
+
+            {/* Secondary Phone Link */}
+            <div className="bg-gray-50 p-6 rounded-3xl border border-gray-200">
+              <span className="block text-[11px] font-bold text-gray-700 uppercase tracking-widest mb-1.5">
+                Secondary Number
+              </span>
+              <a 
+                href={`tel:+91${SECONDARY_PHONE}`} 
+                className="text-gray-900 hover:text-pink-700 font-extrabold text-2xl tracking-tight block hover:underline"
+              >
+                +91 {SECONDARY_PHONE.slice(0, 5)} {SECONDARY_PHONE.slice(5)}
+              </a>
+              <p className="text-xs text-gray-600 mt-2">Tap to call directly</p>
             </div>
           </div>
+
+          {/* Working Hours & Consultation Details */}
+          <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-gray-600 font-semibold">
+            <div className="flex items-center gap-2">
+              <Clock size={16} className="text-pink-700" />
+              <span>Working Hours: Mon – Sat, 10:00 AM – 7:30 PM IST</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield size={16} className="text-pink-700" />
+              <span>100% Online Consultations (Worldwide)</span>
+            </div>
+          </div>
+
         </div>
+
       </div>
-      
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-blush-100/30 to-transparent"></div>
     </section>
   );
 };
