@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Send, Loader2, Instagram, Facebook } from 'lucide-react';
+import { Send, Loader2, Instagram, Facebook, Lock } from 'lucide-react';
 
 const PRIMARY_PHONE = "7588316966";
 const INSTAGRAM_URL = "https://www.instagram.com/numeroby.nandinii?stkn=MW13bHRub2pheGg0Nw==";
 const FACEBOOK_URL = "https://www.facebook.com/share/1FCPVDz1iL/";
 const NEWSLETTER_URL = process.env.NEWSLETTER_URL || 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAdminSheet?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenAdminSheet }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -34,8 +38,8 @@ const Footer: React.FC = () => {
           
           <div className="space-y-4">
             <span className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 leading-none mb-1">Numerology By</span>
-              <span className="text-2xl font-extrabold text-gray-900 leading-none">Nandinii J <span className="text-pink-700">Chauhan</span></span>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 leading-none mb-1">NUMEROLOGY BY</span>
+              <span className="text-2xl font-extrabold text-gray-900 leading-none uppercase">NANDINII J <span className="text-pink-700">CHAUHAN</span></span>
             </span>
             <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
               Helping souls find their natural rhythm through the ancient wisdom of numbers. Modern, simple, and caring.
@@ -106,7 +110,19 @@ const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>© 2026 Numerology by Nandinii J Chauhan. All rights reserved.</p>
-          <p>Designed with care for peaceful clarity.</p>
+          <div className="flex items-center gap-4">
+            <p>Designed with care for peaceful clarity.</p>
+            {onOpenAdminSheet && (
+              <button
+                onClick={onOpenAdminSheet}
+                className="text-gray-400 hover:text-gray-700 transition-colors flex items-center gap-1 text-[11px] p-1 rounded cursor-pointer"
+                title="Private Owner Portal (Password Protected)"
+              >
+                <Lock size={11} className="text-gray-400" />
+                <span>Owner Portal</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </footer>

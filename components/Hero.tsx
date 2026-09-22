@@ -12,9 +12,9 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
     <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-36 px-4 sm:px-6 overflow-hidden scroll-mt-20">
       <div className="max-w-5xl mx-auto text-center relative z-10">
         
-        {/* Label Badge: "Find Your Inner Peace" */}
+        {/* Label Badge: "Numerology for Inner Peace" */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-pink-100 border border-pink-200 text-pink-800 text-xs font-bold uppercase tracking-[0.2em]">
-          Find Your Inner Peace
+          Numerology for Inner Peace
         </div>
 
         {/* Hero Headline */}
@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
         {/* Hero Subtext */}
         <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
-          The universe doesn't make mistakes. You have a unique rhythm, and numbers can help you discover it — so you never have to feel lost.
+          Your birth date contains numbers that can reveal patterns about who you are and where you’re headed.
         </p>
 
         {/* Primary CTAs */}

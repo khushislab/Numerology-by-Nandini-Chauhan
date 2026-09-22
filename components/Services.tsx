@@ -194,52 +194,54 @@ const Services: React.FC<ServicesProps> = ({ onBookClick }) => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid - 2 columns on mobile, 2 on md, 3 on lg */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-3xl p-7 sm:p-8 border ${service.popular ? 'border-pink-500 ring-2 ring-pink-500/20' : 'border-gray-200'} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative group`}
+              className={`bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-5 md:p-8 border ${
+                service.popular ? 'border-pink-500 ring-1 sm:ring-2 ring-pink-500/20' : 'border-gray-200'
+              } shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col relative group`}
             >
               {service.popular && (
-                <div className="absolute -top-3.5 right-6 bg-pink-700 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
+                <div className="absolute -top-2.5 right-2 sm:-top-3.5 sm:right-6 bg-pink-700 text-white text-[8px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-3.5 py-0.5 sm:py-1 rounded-full shadow-md">
                   Most Popular
                 </div>
               )}
 
               {/* Header */}
-              <div className="mb-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-pink-700 transition-colors leading-snug">
+              <div className="mb-2 sm:mb-4">
+                <h3 className="text-xs sm:text-lg md:text-2xl font-bold text-gray-900 group-hover:text-pink-700 transition-colors leading-tight">
                   {service.name}
                 </h3>
-                <p className="text-gray-600 text-xs sm:text-sm mt-1.5 font-medium leading-relaxed">
+                <p className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-1 font-medium leading-tight line-clamp-2 md:line-clamp-none">
                   {service.subtitle}
                 </p>
               </div>
 
               {/* Concrete Outcomes */}
-              <div className="space-y-3 mb-8 flex-grow">
+              <div className="space-y-1 sm:space-y-2 md:space-y-3 mb-3 sm:mb-6 md:mb-8 flex-grow">
                 {service.outcomes.map((outcome, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
-                    <Check size={16} className="text-pink-700 mt-0.5 shrink-0" />
-                    <span>{outcome}</span>
+                  <div key={i} className="flex items-start gap-1 sm:gap-2 text-[9px] sm:text-xs md:text-sm text-gray-700 font-medium leading-tight">
+                    <Check size={12} className="text-pink-700 mt-0.5 shrink-0 sm:w-4 sm:h-4" />
+                    <span className="line-clamp-2 sm:line-clamp-none">{outcome}</span>
                   </div>
                 ))}
               </div>
 
               {/* Price & Action Button */}
-              <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-100 gap-3">
+              <div className="mt-auto pt-2.5 sm:pt-4 md:pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3">
                 <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs sm:text-sm text-gray-400 line-through font-semibold">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-0.5">
+                    <span className="text-[9px] sm:text-xs md:text-sm text-gray-400 line-through font-semibold">
                       ₹{service.regularPrice}
                     </span>
-                    <span className="text-[10px] font-bold text-green-700 bg-green-50 border border-green-200 px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                    <span className="text-[7px] sm:text-[9px] md:text-[10px] font-bold text-green-700 bg-green-50 border border-green-200 px-1 py-0.2 rounded-full whitespace-nowrap">
                       {service.off} OFF
                     </span>
                   </div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+                    <span className="text-sm sm:text-xl md:text-3xl font-black text-gray-900 tracking-tight">
                       ₹{service.price}
                     </span>
                   </div>
@@ -247,10 +249,10 @@ const Services: React.FC<ServicesProps> = ({ onBookClick }) => {
 
                 <button 
                   onClick={() => onBookClick(`${service.name} (₹${service.price})`)}
-                  className="bg-pink-700 hover:bg-pink-800 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 flex items-center gap-1.5 shrink-0"
+                  className="w-full sm:w-auto bg-pink-700 hover:bg-pink-800 text-white px-2 py-1.5 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-[9px] sm:text-xs md:text-sm font-bold transition-all shadow-xs active:scale-95 flex items-center justify-center gap-1 shrink-0 cursor-pointer"
                 >
-                  <PhoneCall size={15} />
-                  Book a Call
+                  <PhoneCall size={11} className="sm:w-3.5 sm:h-3.5 shrink-0" />
+                  <span>Book Call</span>
                 </button>
               </div>
             </div>

@@ -34,16 +34,10 @@ const FAQ: React.FC = () => {
   return (
     <section id="faq" className="py-24 px-6 bg-pink-50/20 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3.5 py-1 rounded-full">
+        <div className="text-center mb-10 sm:mb-12">
+          <span className="text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-4 py-1.5 rounded-full inline-block">
             Frequently Asked Questions
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 mb-4">
-            Common Questions
-          </h2>
-          <p className="text-base text-gray-700">
-            Clear answers to help you feel confident before booking.
-          </p>
         </div>
 
         <div className="space-y-4">

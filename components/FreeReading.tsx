@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, FileText, Gift, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Sparkles, Gift, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface FreeReadingProps {
   onApplyClick: () => void;
@@ -92,18 +92,19 @@ const FreeReading: React.FC<FreeReadingProps> = ({ onApplyClick }) => {
             </div>
           </div>
 
-          {/* CTA Button & Disclaimer */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          {/* CTA Button */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <button
               onClick={onApplyClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-pink-700 hover:bg-pink-800 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 bg-pink-700 hover:bg-pink-800 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               <span>Apply for a Free Reading</span>
               <ArrowRight size={18} />
             </button>
-            <div className="flex items-center gap-2 text-xs text-gray-500 font-medium">
+
+            <div className="flex items-center gap-2 text-xs text-gray-500 font-medium sm:ml-auto">
               <ShieldCheck size={16} className="text-pink-600 shrink-0" />
-              <span>Your details stay 100% private.</span>
+              <span>Your details are kept strictly private & secure.</span>
             </div>
           </div>
 

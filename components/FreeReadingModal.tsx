@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { X, Send, Sparkles, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
+import { addApplication } from '../utils/applicationsStore';
 
 interface FreeReadingModalProps {
   onClose: () => void;
 }
-
-const PRIMARY_PHONE = "7588316966";
 
 const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -24,19 +23,17 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name.trim() || !formData.phone.trim()) return;
 
-    // Compose a clear, respectful WhatsApp message to Nandinii
-    const text = `✨ *Application for Free Reading Draw* ✨\n\n` +
-      `*Name:* ${formData.name}\n` +
-      `*WhatsApp:* ${formData.phone}\n` +
-      (formData.email ? `*Email:* ${formData.email}\n` : '') +
-      (formData.dob ? `*Date of Birth:* ${formData.dob}\n` : '') +
-      (formData.guidanceNeed ? `*Guidance Needed In:* ${formData.guidanceNeed}\n` : '') +
-      `\n_Applying for Thursday / Saturday (10-11 AM) free reading draw._`;
+    // Save directly to the Index Sheet / Excel Database
+    addApplication({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      dob: formData.dob,
+      guidanceNeed: formData.guidanceNeed
+    });
 
-    const whatsappUrl = `https://wa.me/91${PRIMARY_PHONE}?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, '_blank');
     setIsSubmitted(true);
   };
 
@@ -168,17 +165,21 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
             </form>
           </div>
         ) : (
-          <div className="text-center py-8">
+          <div className="text-center py-6">
             <div className="w-16 h-16 bg-pink-100 text-pink-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-pink-200">
               <CheckCircle2 size={36} />
             </div>
-            <h4 className="text-2xl font-extrabold text-gray-900 mb-2">Application Received!</h4>
+            <span className="inline-block bg-pink-100 text-pink-800 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+              Entry Received
+            </span>
+            <h4 className="text-2xl font-extrabold text-gray-900 mb-2">Application Submitted!</h4>
             <p className="text-sm text-gray-600 max-w-sm mx-auto leading-relaxed mb-6">
-              Thank you, <span className="font-semibold text-gray-900">{formData.name}</span>. Your entry has been added to this week's fair draw. Nandini will reach out directly on WhatsApp if your name is drawn.
+              Thank you, <span className="font-semibold text-gray-900">{formData.name}</span>. Your application has been securely recorded for this week's free reading draw (Thursday & Saturday, 10–11 AM). Nandinii will reach out directly on WhatsApp if your name is drawn.
             </p>
+
             <button 
               onClick={onClose}
-              className="bg-pink-700 hover:bg-pink-800 text-white font-bold px-8 py-2.5 rounded-full text-sm transition-all"
+              className="bg-pink-700 hover:bg-pink-800 text-white font-bold px-8 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md active:scale-95 cursor-pointer"
             >
               Close
             </button>
