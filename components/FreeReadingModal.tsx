@@ -1,40 +1,67 @@
 import React, { useState } from 'react';
-import { X, Send, Sparkles, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
+import { X, Send, Sparkles, CheckCircle2, ShieldCheck, Clock, Loader2 } from 'lucide-react';
 import { addApplication } from '../utils/applicationsStore';
 
 interface FreeReadingModalProps {
   onClose: () => void;
 }
 
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9dW68vhergae2730iJTTHu8zn0w4JbveLzs1LxOuw_gwTRylYiWJhe6PdjBJyS6TCtw/exec';
+
 const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
+    whatsapp: '',
     email: '',
     dob: '',
-    guidanceNeed: ''
+    guidance: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) return;
+    if (!formData.name.trim() || !formData.whatsapp.trim()) return;
 
-    // Save directly to the Index Sheet / Excel Database
-    addApplication({
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-      dob: formData.dob,
-      guidanceNeed: formData.guidanceNeed
-    });
+    setIsSubmitting(true);
 
-    setIsSubmitted(true);
+    const payload = {
+      name: formData.name.trim(),
+      whatsapp: formData.whatsapp.trim(),
+      dob: formData.dob.trim(),
+      email: formData.email.trim(),
+      guidance: formData.guidance.trim()
+    };
+
+    try {
+      // POST request to Google Apps Script endpoint with no-cors mode
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.error('Error submitting application:', err);
+    } finally {
+      // Also save to internal local store for client-side review if needed
+      addApplication({
+        name: payload.name,
+        phone: payload.whatsapp,
+        email: payload.email,
+        dob: payload.dob,
+        guidanceNeed: payload.guidance
+      });
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   return (
@@ -90,10 +117,10 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
                   </label>
                   <input 
                     type="tel" 
-                    name="phone" 
+                    name="whatsapp" 
                     required
                     placeholder="10-digit number"
-                    value={formData.phone}
+                    value={formData.whatsapp}
                     onChange={handleInputChange}
                     className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none"
                   />
@@ -133,10 +160,10 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
                   What guidance are you seeking right now? (Optional)
                 </label>
                 <textarea 
-                  name="guidanceNeed" 
+                  name="guidance" 
                   rows={2}
                   placeholder="e.g. Career decision, personal clarity, or relationship transition..."
-                  value={formData.guidanceNeed}
+                  value={formData.guidance}
                   onChange={handleInputChange}
                   className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none resize-none"
                 />
@@ -145,10 +172,20 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
               <div className="pt-2">
                 <button 
                   type="submit"
-                  className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 px-6 rounded-full transition-all shadow-md active:scale-98 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full bg-pink-700 hover:bg-pink-800 disabled:bg-pink-400 text-white font-bold py-3.5 px-6 rounded-full transition-all shadow-md active:scale-98 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer"
                 >
-                  <Send size={16} />
-                  <span>Submit Free Reading Application</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Submitting Application...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      <span>Submit Free Reading Application</span>
+                    </>
+                  )}
                 </button>
               </div>
 
