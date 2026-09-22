@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import FreeReading from './components/FreeReading';
 import About from './components/About';
 import Services from './components/Services';
+import Testimonials from './components/Testimonials';
 import HowItWorks from './components/HowItWorks';
 import Ethics from './components/Ethics';
 import FAQ from './components/FAQ';
@@ -57,6 +58,7 @@ const App: React.FC = () => {
         <Hero onBookClick={openBooking} />
         <About />
         <Services onBookClick={openBooking} />
+        <Testimonials />
         <FreeReading onApplyClick={openFreeReading} />
         <HowItWorks />
         <Ethics />

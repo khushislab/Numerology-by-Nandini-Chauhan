@@ -64,7 +64,7 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
               Apply for a Free Reading
             </h3>
             <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed">
-              Takes just one minute. Every Thursday & Saturday (10–11 AM), Nandini selects recipients through a fair draw.
+              Takes just one minute. Every Thursday & Saturday (10–11 AM), I select recipients through a fair draw.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">

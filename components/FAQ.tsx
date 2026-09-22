@@ -32,30 +32,30 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-8 sm:py-16 md:py-24 px-3 sm:px-6 bg-pink-50/20 scroll-mt-20">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-4 sm:mb-10 md:mb-12">
+    <section id="faq" className="py-8 sm:py-12 md:py-14 px-3 sm:px-6 bg-pink-50/20 scroll-mt-20">
+      <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-4 sm:mb-8 md:mb-8">
           <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-pink-800 uppercase bg-pink-100 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full inline-block">
             Frequently Asked Questions
           </span>
         </div>
 
-        <div className="space-y-2 sm:space-y-4">
+        <div className="space-y-2 sm:space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="bg-white rounded-xl sm:rounded-2xl border border-pink-100 shadow-2xs sm:shadow-sm overflow-hidden">
+            <div key={i} className="bg-white rounded-xl sm:rounded-2xl border border-pink-100 shadow-2xs overflow-hidden">
               <button 
-                className="w-full p-3 sm:p-5 md:p-6 text-left flex justify-between items-center hover:bg-pink-50/50 transition-colors cursor-pointer" 
+                className="w-full p-3 sm:p-4 md:p-4 text-left flex justify-between items-center hover:bg-pink-50/50 transition-colors cursor-pointer" 
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className="font-bold text-gray-900 text-xs sm:text-base md:text-lg pr-2 sm:pr-4 leading-snug">{faq.q}</span>
+                <span className="font-bold text-gray-900 text-xs sm:text-sm md:text-sm pr-2 sm:pr-4 leading-snug">{faq.q}</span>
                 {openIndex === i ? (
-                  <ChevronUp className="text-pink-700 shrink-0 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ChevronUp className="text-pink-700 shrink-0 w-4 h-4" />
                 ) : (
-                  <ChevronDown className="text-gray-500 shrink-0 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ChevronDown className="text-gray-500 shrink-0 w-4 h-4" />
                 )}
               </button>
               {openIndex === i && (
-                <div className="px-3 pb-3.5 pt-2 sm:px-6 sm:pb-6 sm:pt-4 text-gray-700 text-[11px] sm:text-sm leading-relaxed border-t border-pink-100">
+                <div className="px-3 pb-3 pt-2 sm:px-4 sm:pb-4 sm:pt-2.5 text-gray-700 text-[11px] sm:text-xs md:text-xs leading-relaxed border-t border-pink-100">
                   {faq.a}
                 </div>
               )}

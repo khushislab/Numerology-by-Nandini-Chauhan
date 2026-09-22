@@ -32,9 +32,9 @@ const Footer: React.FC<FooterProps> = ({ onOpenAdminSheet }) => {
   };
 
   return (
-    <footer className="bg-white pt-20 pb-12 px-6 border-t border-pink-100">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-14">
+    <footer className="bg-white pt-10 sm:pt-12 md:pt-14 pb-8 px-4 sm:px-6 border-t border-pink-100">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10">
           
           <div className="space-y-4">
             <span className="flex flex-col">
