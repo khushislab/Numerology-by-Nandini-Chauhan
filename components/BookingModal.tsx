@@ -16,6 +16,7 @@ const availableServices = [
   "Baby Name Numerology (₹1,499)",
   "Litigation / Divorce (₹1,299)",
   "House / Property (₹1,139)",
+  "Vehicle Numerology (₹1,000)",
   "Mobile Number (₹1,499)",
   "Yearly Forecast (₹1,499)",
   "Marriage Matching (₹1,299)",

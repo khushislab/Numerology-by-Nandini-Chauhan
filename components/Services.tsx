@@ -103,6 +103,18 @@ const services: ServiceItem[] = [
     ]
   },
   {
+    name: "Vehicle Numerology",
+    regularPrice: "2,499",
+    price: "1,000",
+    off: "60%",
+    subtitle: "Check your vehicle number plate & best date to buy.",
+    outcomes: [
+      "Single-digit vibrational value (1–9) of license plate by adding letters and numbers",
+      "Match license plate energy with your personal birth numbers",
+      "Find auspicious date and timing to buy or take delivery"
+    ]
+  },
+  {
     name: "Mobile Number",
     regularPrice: "3,999",
     price: "1,499",
