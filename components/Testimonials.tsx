@@ -27,6 +27,11 @@ const testimonials: TestimonialItem[] = [
     name: "Shivani Singh",
     rating: 5,
     text: "The readings were spot on. I was actually able to understand life style patterns and why something is happening atm.",
+  },
+  {
+    name: "Megha Gaikwad",
+    rating: 5,
+    text: "The whole experience was really wholesome. Thanks a lot for talking to me. The good part of the session was when you gave me an understanding about numbers.",
   }
 ];
 
