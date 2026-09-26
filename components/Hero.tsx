@@ -9,7 +9,7 @@ const PRIMARY_PHONE = "7588316966";
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   return (
-    <section id="home" className="relative pt-28 pb-14 md:pt-36 md:pb-20 px-4 sm:px-6 overflow-hidden scroll-mt-20">
+    <section id="home" className="relative pt-32 pb-14 md:pt-40 md:pb-20 px-4 sm:px-6 overflow-hidden scroll-mt-20">
       <div className="max-w-4xl mx-auto text-center relative z-10">
         
         {/* Label Badge: "Numerology for Inner Peace" */}

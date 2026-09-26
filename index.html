@@ -165,6 +165,21 @@
       0% { width: 0%; }
       100% { width: 100%; }
     }
+    @keyframes topStripBlink {
+      0%, 100% {
+        background-color: #be185d;
+        filter: brightness(1);
+        box-shadow: 0 0 12px rgba(190, 24, 93, 0.4);
+      }
+      50% {
+        background-color: #9d174d;
+        filter: brightness(1.28);
+        box-shadow: 0 0 24px rgba(244, 114, 182, 0.85);
+      }
+    }
+    .blink-top-strip {
+      animation: topStripBlink 1.8s infinite ease-in-out;
+    }
     @keyframes softBlink {
       0%, 100% {
         box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.4), 0 20px 25px -5px rgba(219, 39, 119, 0.08);

@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
-      const offset = 90;
+      const offset = 105;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({
@@ -39,16 +39,17 @@ const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Thin Banner at the very top */}
-      <div className="bg-pink-700 text-white text-[9px] sm:text-xs py-1 sm:py-1.5 px-2 sm:px-3 text-center font-medium flex items-center justify-center gap-1 sm:gap-2 shadow-xs leading-tight">
-        <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-pink-200 animate-ping shrink-0"></span>
-        <span className="font-semibold truncate sm:overflow-visible">✨ Free Readings Thu & Sat (10–11 AM)</span>
+      {/* Prominent Blinking Top Banner Strip */}
+      <div className="blink-top-strip text-white text-xs sm:text-sm md:text-sm py-2 sm:py-2.5 px-3 sm:px-4 text-center font-bold flex items-center justify-center gap-2 sm:gap-3 shadow-md tracking-wide leading-tight transition-colors">
+        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-pink-100 animate-ping shrink-0"></span>
+        <span className="truncate sm:overflow-visible">✨ Free Readings Every Thu & Sat (10–11 AM IST)</span>
         <a 
           href="#free-reading" 
           onClick={(e) => handleLinkClick(e, '#free-reading')} 
-          className="underline hover:text-pink-200 font-bold whitespace-nowrap ml-1 cursor-pointer shrink-0"
+          className="bg-white text-pink-800 hover:bg-pink-100 hover:text-pink-900 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider whitespace-nowrap ml-1 cursor-pointer shrink-0 shadow-xs transition-transform active:scale-95 flex items-center gap-1"
         >
-          Apply →
+          <span>Apply Now</span>
+          <span>→</span>
         </a>
       </div>
 
