@@ -20,7 +20,7 @@ const faqs = [
   },
   { 
     q: "What if I am not sure which reading I need?", 
-    a: "You can click 'Ask on WhatsApp' on the last card or message +91 75883 16966. Simply tell Nandinii what you are experiencing in 2–3 sentences, and she will recommend the most helpful reading with zero pressure." 
+    a: "You can click 'Ask on WhatsApp' on the last card or message +91 82756 14485. Simply tell Nandinii what you are experiencing in 2–3 sentences, and she will recommend the most helpful reading with zero pressure." 
   },
   { 
     q: "When and how do I receive my written notes or report?", 

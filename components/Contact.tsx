@@ -5,7 +5,7 @@ interface ContactProps {
   onBookClick: () => void;
 }
 
-const PRIMARY_PHONE = "7588316966";
+const PRIMARY_PHONE = "8275614485";
 const SECONDARY_PHONE = "7448222924";
 
 const Contact: React.FC<ContactProps> = ({ onBookClick }) => {

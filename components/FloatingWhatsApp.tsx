@@ -2,7 +2,7 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
-const PRIMARY_PHONE = "7588316966";
+const PRIMARY_PHONE = "8275614485";
 
 const FloatingWhatsApp: React.FC = () => {
   return (

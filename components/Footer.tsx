@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Loader2, Instagram, Facebook, Lock } from 'lucide-react';
 
-const PRIMARY_PHONE = "7588316966";
+const PRIMARY_PHONE = "8275614485";
 const INSTAGRAM_URL = "https://www.instagram.com/numeroby.nandinii?stkn=MW13bHRub2pheGg0Nw==";
 const FACEBOOK_URL = "https://www.facebook.com/share/1FCPVDz1iL/";
 const NEWSLETTER_URL = process.env.NEWSLETTER_URL || 'https://script.google.com/macros/s/AKfycbz2Lqd9myCymPjbTVzCenaovhGDyJcJ6hk1q6fo7PcYmQAviO2AtZyOVnTc8oxcFQugaQ/exec';

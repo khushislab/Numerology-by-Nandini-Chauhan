@@ -5,7 +5,7 @@ interface HeroProps {
   onBookClick: (serviceName?: string) => void;
 }
 
-const PRIMARY_PHONE = "7588316966";
+const PRIMARY_PHONE = "8275614485";
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   return (

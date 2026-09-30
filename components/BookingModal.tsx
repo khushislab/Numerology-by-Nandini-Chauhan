@@ -6,7 +6,7 @@ interface BookingModalProps {
   selectedService?: string | null;
 }
 
-const PRIMARY_PHONE = "7588316966";
+const PRIMARY_PHONE = "8275614485";
 
 const availableServices = [
   "Personal Numerology Reading (₹1,099)",
