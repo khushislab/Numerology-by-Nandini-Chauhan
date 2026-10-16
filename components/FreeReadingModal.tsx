@@ -88,13 +88,21 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
             </div>
 
             <h3 className="text-2xl font-extrabold text-gray-900 leading-tight">
-              Apply for a Free Reading
+              Apply for Reading
             </h3>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed">
-              Takes just one minute. Every Thursday & Saturday (10–11 AM), I select recipients through a fair draw.
+            <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed">
+              Takes just one minute. Every Thursday & Saturday (10–11 AM), recipients are selected through a fair draw.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            {/* Gentle Guidance Note */}
+            <div className="mt-3.5 mb-1 bg-pink-50/90 border border-pink-200/90 rounded-2xl p-3 sm:p-3.5 flex items-start gap-2.5 text-pink-900 shadow-2xs">
+              <Sparkles size={15} className="text-pink-600 shrink-0 mt-0.5" />
+              <p className="text-xs sm:text-sm text-pink-950/90 leading-relaxed">
+                <span className="font-bold text-pink-950">A gentle note:</span> To offer sincere, unhurried attention to each person, you are welcome to ask <span className="font-semibold underline decoration-pink-300 underline-offset-2">one question</span> about your reading.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="mt-5 space-y-4">
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
                   Your Full Name *
@@ -156,17 +164,25 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                  What guidance are you seeking right now? (Optional)
-                </label>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    Your Question for the Reading
+                  </label>
+                  <span className="text-[10px] font-semibold text-pink-700 bg-pink-100/70 px-2 py-0.5 rounded-full border border-pink-200">
+                    1 Question
+                  </span>
+                </div>
                 <textarea 
                   name="guidance" 
                   rows={2}
-                  placeholder="e.g. Career decision, personal clarity, or relationship transition..."
+                  placeholder="Kindly share the one question closest to your heart (e.g. career step, life clarity, or relationship transition)..."
                   value={formData.guidance}
                   onChange={handleInputChange}
                   className="w-full bg-pink-50/40 border border-pink-200 rounded-xl py-2.5 px-4 text-sm text-gray-900 focus:ring-2 focus:ring-pink-600 focus:outline-none resize-none"
                 />
+                <p className="text-[11px] text-gray-500 mt-1 italic">
+                  Take your time — ask the one question you'd most love clarity on.
+                </p>
               </div>
 
               <div className="pt-2">
@@ -183,7 +199,7 @@ const FreeReadingModal: React.FC<FreeReadingModalProps> = ({ onClose }) => {
                   ) : (
                     <>
                       <Send size={16} />
-                      <span>Submit Free Reading Application</span>
+                      <span>Apply for Reading</span>
                     </>
                   )}
                 </button>

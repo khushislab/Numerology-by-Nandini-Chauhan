@@ -32,6 +32,11 @@ const testimonials: TestimonialItem[] = [
     name: "Megha Gaikwad",
     rating: 5,
     text: "The whole experience was really wholesome. Thanks a lot for talking to me. The good part of the session was when you gave me an understanding about numbers.",
+  },
+  {
+    name: "Gayatri Singh",
+    rating: 5,
+    text: "I connected with Nandinii through a relative, and my experience was really good. Her career-related insights were quite accurate and helpful. Thank you for the guidance and positive experience!",
   }
 ];
 

@@ -33,7 +33,15 @@ const FreeReading: React.FC<FreeReadingProps> = ({ onApplyClick }) => {
               A free reading for someone who needs it.
             </h2>
             <p className="text-gray-700 text-xs sm:text-sm md:text-sm leading-relaxed font-normal">
-              Not everyone can pay for guidance right now. Every Thursday & Saturday, I offer free readings.
+              Not everyone can pay for guidance right now. Every Thursday & Saturday, I offer free readings with heartfelt care.
+            </p>
+          </div>
+
+          {/* Gentle Guidance Note: One Question Only */}
+          <div className="bg-pink-50/90 border border-pink-200/90 rounded-xl sm:rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 mb-3 sm:mb-4 flex items-start sm:items-center gap-2 text-pink-900 shadow-2xs">
+            <Sparkles size={14} className="text-pink-600 shrink-0 mt-0.5 sm:mt-0" />
+            <p className="text-[11px] sm:text-xs md:text-sm text-pink-900/90 leading-relaxed">
+              <span className="font-bold text-pink-950">A gentle note:</span> To dedicate full presence and depth to everyone, you can ask <span className="font-semibold underline decoration-pink-300 underline-offset-2">one question</span> about your reading.
             </p>
           </div>
 
@@ -77,7 +85,7 @@ const FreeReading: React.FC<FreeReadingProps> = ({ onApplyClick }) => {
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs md:text-xs font-bold text-gray-900 leading-tight">
-                    Free Call
+                    1 Free Question
                   </p>
                   <p className="text-[9px] sm:text-xs text-gray-600 hidden sm:block mt-0.5">
                     Thu & Sat 10 AM
@@ -93,7 +101,7 @@ const FreeReading: React.FC<FreeReadingProps> = ({ onApplyClick }) => {
               onClick={onApplyClick}
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-pink-700 hover:bg-pink-800 text-white px-4 sm:px-6 md:px-6 py-2 sm:py-2.5 md:py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-xs hover:shadow-md transition-all active:scale-95 cursor-pointer shrink-0"
             >
-              <span>Apply for Free Reading</span>
+              <span>Apply for Reading</span>
               <ArrowRight size={14} className="sm:w-3.5 sm:h-3.5" />
             </button>
 

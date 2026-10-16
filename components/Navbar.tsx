@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           onClick={(e) => handleLinkClick(e, '#free-reading')} 
           className="bg-white text-pink-800 hover:bg-pink-100 hover:text-pink-900 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider whitespace-nowrap ml-1 cursor-pointer shrink-0 shadow-xs transition-transform active:scale-95 flex items-center gap-1"
         >
-          <span>Apply Now</span>
+          <span>Apply for Reading</span>
           <span>→</span>
         </a>
       </div>

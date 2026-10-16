@@ -24,7 +24,7 @@ const services: ServiceItem[] = [
     popular: true,
     subtitle: "Learn who you are from your birth date and name.",
     outcomes: [
-      "Your Life Path, Destiny and Soul Urge numbers",
+      "Your Life Path and Strength numbers",
       "Your natural strengths",
       "Habits that may be holding you back"
     ]
